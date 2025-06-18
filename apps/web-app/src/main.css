@@ -1,5 +1,45 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: red;
+  --color-background-page: #fff;
+  --color-background-card: #f3f3f7;
+  --color-background-success: #d9ffd6;
+  --color-background-info: #d1f1ff;
+  --color-background-warn: #ffe8bd;
+  --color-background-error: #ffe0e0;
+  --color-foreground-primary: #161d26;
+
+  --color-foreground-primary-inverted: #e9e2d9;
+  --color-foreground-secondary: #232b37;
+  --color-foreground-secondary-inverted: #dbd4c8;
+  --color-foreground-faded: #72747e;
+  --color-foreground-faded-inverted: #8d8b81;
+  --color-foreground-disabled: #b4b4bb;
+  --color-foreground-disabled-inverted: #4b4b44;
+  --color-foreground-success: #00802f;
+  --color-foreground-info: #006ce0;
+  --color-foreground-warn: #d14600;
+  --color-foreground-error: #db0000;
+
+  --color-link-default: #006ce0;
+  --color-link-default-inverted: #00a2ff;
+  --color-link-hover: #003b8f;
+  --color-link-hover-inverted: #0076ff;
+
+  --color-button-default: #f90;
+  --color-button-hover: #ec7211;
+}
+
+html {
+  ::selection {
+    @apply bg-button-default/40 text-foreground-primary;
+  }
+
+  body {
+    @apply bg-background-page text-foreground-primary;
+  
+    button, a {
+      @apply cursor-pointer;
+    }
+  }
 }
