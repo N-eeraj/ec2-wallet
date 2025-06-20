@@ -3,7 +3,12 @@ import Welcome from "@components/Auth/Welcome"
 function Register() {
   return (
     <>
-      <Welcome />
+      <Welcome
+        title="Welcome Aboard!"
+        description="Create an account to get started." />
+      <form className="w-full">
+        
+      </form>
     </>
   )
 }
