@@ -1,6 +1,10 @@
+import Welcome from "@components/Auth/Welcome"
+
 function Login() {
   return (
-    <div>Login</div>
+    <>
+      <Welcome />
+    </>
   )
 }
 

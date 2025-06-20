@@ -1,6 +1,10 @@
+import Welcome from "@components/Auth/Welcome"
+
 function Register() {
   return (
-    <div>Register</div>
+    <>
+      <Welcome />
+    </>
   )
 }
 

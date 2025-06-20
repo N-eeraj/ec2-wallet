@@ -1,20 +1,15 @@
 import { Outlet } from "react-router"
+import AuthLogo from "@components/Auth/Logo"
+import Tab from "@components/Auth/Tab"
 
 function Auth() {
   return (
-    <main className="flex flex-col justify-end landscape:justify-center items-center gap-y-6 sm:gap-y-12 h-svh sm:p-12 bg-background-secondary">
-      <div className="flex items-center gap-x-2 sm:gap-x-4 flex-1 landscape:flex-none">
-        <img
-          src="/images/logo.svg"
-          alt="ec2-wallet-logo"
-          className="w-10 sm:w-20" />
-        <h1 className="text-3xl sm:text-5xl">
-          Wallet
-        </h1>
-      </div>
+    <main className="flex flex-col justify-end landscape:justify-start items-center gap-y-6 sm:gap-y-12 landscape:gap-y-0 h-svh sm:p-16 bg-background-secondary">
+      <AuthLogo />
 
-      <div className="flex flex-col justify-center items-center w-full max-w-xl min-h-3/4 mt-auto sm:mt-0 px-3 py-5 bg-background-primary rounded-t-4xl sm:rounded-4xl md:rounded-2xl shadow-2xl sm:shadow-md md:shadow-sm">
+      <div className="flex flex-col justify-between items-center w-full max-w-xl landscape:max-w-lg min-h-2/3 landscape:min-h-auto mt-auto sm:mt-0 landscape:my-auto px-3 sm:px-8 py-5 sm:py-10 bg-background-primary rounded-t-4xl sm:rounded-4xl md:rounded-2xl shadow-2xl sm:shadow-md md:shadow-sm duration-500">
         <Outlet />
+        <Tab />
       </div>
     </main>
   )
