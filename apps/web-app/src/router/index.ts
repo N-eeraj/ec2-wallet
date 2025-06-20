@@ -4,7 +4,7 @@ import Root from "@layouts/Root"
 
 // routes
 import Home from "@pages/Home"
-import guestRoutes from "@router/routes/guest"
+import authRoutes from "@router/routes/auth"
 import PageNotFound from "@pages/PageNotFound"
 
 const router = createBrowserRouter([
@@ -16,7 +16,7 @@ const router = createBrowserRouter([
         index: true,
         Component: Home,
       },
-      guestRoutes,
+      authRoutes,
       {
         path: "*",
         Component: PageNotFound,

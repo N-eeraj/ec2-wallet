@@ -1,5 +1,26 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "Ember";
+  src: url("/fonts/ember/light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Ember";
+  src: url("/fonts/ember/medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Ember";
+  src: url("/fonts/ember/bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
 @theme {
   --color-background-primary: #fff;
   --color-background-secondary: #f3f3f7;
@@ -28,6 +49,8 @@
 
   --color-primary-default: #f7981f;
   --color-primary-hover: #e87c2e;
+
+  --font-ember: "Ember", sans-serif;
 }
 
 html {
@@ -36,7 +59,7 @@ html {
   }
 
   body {
-    @apply bg-background-primary text-foreground-primary;
+    @apply bg-background-primary text-foreground-primary font-ember;
   
     button, a {
       @apply cursor-pointer;
