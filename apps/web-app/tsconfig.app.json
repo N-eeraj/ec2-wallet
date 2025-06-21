@@ -30,6 +30,7 @@
       "@components/*": ["./src/components/*"],
       "@hooks/*": ["./src/hooks/*"],
       "@features/*": ["./src/features/*"],
+      "@constants/*": ["./src/constants/*"],
     }
   },
   "include": ["src"]

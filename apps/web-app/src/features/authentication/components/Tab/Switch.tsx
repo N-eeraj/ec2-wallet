@@ -19,7 +19,7 @@ function Switch({ href, active, text }: Props) {
       active && "landscape:hidden",
     )}>
       <span className="portrait:hidden text-sm text-foreground-faded">
-        {text.label} ?
+        {text.label}?
       </span>
       <Link
         to={href}

@@ -19,12 +19,10 @@ export const LOGO_MOTION_PROPS: HTMLMotionProps<"div"> = {
 }
 
 // auth card animation
-export const AUTH_CARD_ANIMATION_DURATION = 0.75
-export const AUTH_CARD_ANIMATION_DELAY = LOGO_ANIMATION_DURATION / 2
 export const AUTH_CARD_BASE_MOTION_PROPS: HTMLMotionProps<"div"> = {
   transition: {
-    delay: AUTH_CARD_ANIMATION_DELAY,
-    duration: AUTH_CARD_ANIMATION_DURATION,
+    delay: 0.75,
+    duration: LOGO_ANIMATION_DURATION / 2,
   },
 }
 export const AUTH_CARD_XS_MOTION_PROPS: HTMLMotionProps<"div"> = {
