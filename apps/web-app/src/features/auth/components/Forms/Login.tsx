@@ -17,7 +17,7 @@ function LoginForm() {
     isSubmitting,
   } = useAuth({
     schema: formSchema,
-    endpoint: "/api/login",
+    endpoint: "/login",
   })
 
   return (

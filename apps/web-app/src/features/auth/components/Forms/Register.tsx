@@ -17,7 +17,7 @@ function RegisterForm() {
     isSubmitting,
   } = useAuth({
     schema: formSchema,
-    endpoint: "/api/register",
+    endpoint: "/register",
   })
 
   return (
