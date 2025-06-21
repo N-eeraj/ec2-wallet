@@ -1,26 +1,14 @@
 import {
   motion,
-  type HTMLMotionProps,
 } from "motion/react"
-
-const logoMotionProps: HTMLMotionProps<"div"> = {
-  initial: {
-    opacity: 0,
-    y: 20,
-  },
-  animate: {
-    opacity: 1,
-    y: 0,
-  },
-  transition: {
-    duration: 0.5,
-  },
-}
+import {
+  LOGO_MOTION_PROPS,
+} from "@features/authentication/constants"
 
 function Logo() {
   return (
     <motion.div
-      {...logoMotionProps}
+      {...LOGO_MOTION_PROPS}
       className="flex items-center gap-x-2 sm:gap-x-4 flex-1 landscape:flex-none">
       <img
         src="/images/logo.svg"

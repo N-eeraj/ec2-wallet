@@ -59,7 +59,7 @@ html {
   }
 
   body {
-    @apply bg-background-primary text-foreground-primary font-ember;
+    @apply bg-background-primary text-foreground-primary font-ember overflow-x-hidden;
   
     button, a {
       @apply cursor-pointer;

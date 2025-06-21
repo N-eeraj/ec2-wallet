@@ -21,7 +21,9 @@ function Switch({ href, active, text }: Props) {
       <span className="portrait:hidden text-sm text-foreground-faded">
         {text.label} ?
       </span>
-      <Link to={href}>
+      <Link
+        to={href}
+        className="portrait:size-full">
         <button className={clsx(
           "w-full landscape:w-fit portrait:p-2 font-bold",
           active ? "text-white landscape:text-primary-default landscape:hover:text-primary-hover" : "text-primary-default duration-300",

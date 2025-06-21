@@ -29,6 +29,7 @@
       "@pages/*": ["./src/pages/*"],
       "@components/*": ["./src/components/*"],
       "@hooks/*": ["./src/hooks/*"],
+      "@features/*": ["./src/features/*"],
     }
   },
   "include": ["src"]
