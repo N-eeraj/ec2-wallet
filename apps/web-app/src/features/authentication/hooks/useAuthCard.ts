@@ -27,27 +27,29 @@ export default function useAuthCard() {
   const childrenWrapperAnimationDirection = location.pathname === "/login" ? "left" : "right"
 
   const childrenWrapperMotionProps: HTMLMotionProps<"div"> = {
-    variants: {
-      initial: (direction: "left" | "right") => ({
-        ...(!isLandscape && {x: direction === "right" ? 100 : -100}),
-        opacity: 0,
-      }),
-      animate: {
-        x: 0,
-        opacity: 1,
+    ...(!isLandscape && {
+      variants: {
+        initial: (direction: "left" | "right") => ({
+          x: direction === "right" ? 100 : -100,
+          opacity: 0,
+        }),
+        animate: {
+          x: 0,
+          opacity: 1,
+        },
+        exit: (direction: "left" | "right") => ({
+          x: direction === "right" ? -100 : 100,
+          opacity: 0,
+        }),
       },
-      exit: (direction: "left" | "right") => ({
-        ...(!isLandscape && {x: direction === "right" ? -100 : 100}),
-        opacity: 0,
-      }),
-    },
-    custom: childrenWrapperAnimationDirection,
-    initial: "initial",
-    animate: "animate",
-    exit: "exit",
-    transition: {
-      duration: 0.2,
-    },
+      custom: childrenWrapperAnimationDirection,
+      initial: "initial",
+      animate: "animate",
+      exit: "exit",
+      transition: {
+        duration: 0.2,
+      },
+    }),
   }
 
   return {

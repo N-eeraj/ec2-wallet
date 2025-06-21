@@ -1,0 +1,9 @@
+{
+  "material-icon-theme.folders.associations": {
+    "web-app": "react-components",
+    "server": "node",
+    "e2e": "cypress",
+    "native-app": "expo",
+    "features": "core",
+  },
+}
