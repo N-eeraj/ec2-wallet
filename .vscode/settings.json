@@ -1,4 +1,43 @@
 {
+  "material-icon-theme.files.customClones": [
+    {
+      "name": "nest-module",
+      "base": "nest",
+      "color": "#de244e",
+      "fileNames": ["*.module.ts"]
+    },
+    {
+      "name": "nest-controller",
+      "base": "nest",
+      "color": "#ce7e0a",
+      "fileNames": ["*.controller.ts"]
+    },
+    {
+      "name": "nest-service",
+      "base": "nest",
+      "color": "#5e8c16",
+      "fileNames": ["*.service.ts"]
+    },
+    {
+      "name": "nest-guard",
+      "base": "nest",
+      "color": "#016f91",
+      "fileNames": ["*.guard.ts"]
+    },
+    {
+      "name": "nest-pipe",
+      "base": "nest",
+      "color": "#914a91",
+      "fileNames": ["*.pipe.ts"]
+    },
+  ],
+  "material-icon-theme.files.associations": {
+    "*.module.ts": "nest-module",
+    "*.controller.ts": "nest-controller",
+    "*.service.ts": "nest-service",
+    "*.guard.ts": "nest-guard",
+    "*.pipe.ts": "nest-pipe",
+  },
   "material-icon-theme.folders.associations": {
     "web-app": "react-components",
     "server": "node",

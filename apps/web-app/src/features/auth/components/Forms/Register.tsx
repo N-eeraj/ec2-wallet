@@ -1,10 +1,13 @@
 import {
   formSchema,
-} from "@app/schemas/auth/register"
-
+} from "@ec2-wallet/schemas/auth/register"
 import useAuth from "@features/auth/hooks/useAuth"
+
 import Input from "@components/Input"
 import Button from "@components/Button"
+import {
+  onPhoneInput,
+} from "@utils/input"
 
 function RegisterForm() {
   const {
@@ -32,7 +35,8 @@ function RegisterForm() {
         type="tel"
         placeholder="Enter your phone number"
         errors={errors.phone}
-        className="border border-foreground-faded/20" />
+        className="border border-foreground-faded/20"
+        onInput={onPhoneInput} />
 
       <Input
         {...register("password")}

@@ -10,6 +10,9 @@ import {
 } from "zod/v4"
 import request from "@lib/axios"
 import {
+  toast,
+} from "sonner"
+import {
   getErrorMessage,
 } from "@utils/request"
 
@@ -37,8 +40,7 @@ export default function useAuth<FormShape extends ZodRawShape>({ schema, endpoin
           body,
         })
       } catch(error) {
-        const message = getErrorMessage(error)
-        console.log(message)
+        toast.error(getErrorMessage(error))
       }
     }
   )
