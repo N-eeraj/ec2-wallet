@@ -1,7 +1,9 @@
 import type {
   FormEvent,
 } from "react"
-import { MAX_PHONE_LENGTH } from "@ec2-wallet/schemas/constants"
+import {
+  MAX_PHONE_LENGTH,
+} from "@features/auth/constants"
 
 interface Options {
   maxLength?: number

@@ -1,6 +1,6 @@
 import {
   formSchema,
-} from "@ec2-wallet/schemas/auth/register"
+} from "@features/auth/schemas/register"
 import useAuth from "@features/auth/hooks/useAuth"
 
 import Input from "@components/Input"

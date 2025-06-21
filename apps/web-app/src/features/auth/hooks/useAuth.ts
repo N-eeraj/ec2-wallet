@@ -7,7 +7,7 @@ import {
 import {
   type ZodObject,
   type ZodRawShape,
-} from "zod/v4"
+} from "zod"
 import request from "@lib/axios"
 import {
   toast,
@@ -39,6 +39,7 @@ export default function useAuth<FormShape extends ZodRawShape>({ schema, endpoin
         const data = await request.post(endpoint, {
           body,
         })
+        console.log(data)
       } catch(error) {
         toast.error(getErrorMessage(error))
       }
