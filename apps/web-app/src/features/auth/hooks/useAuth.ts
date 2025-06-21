@@ -8,6 +8,10 @@ import {
   type ZodObject,
   type ZodRawShape,
 } from "zod/v4"
+import request from "@lib/axios"
+import {
+  getErrorMessage,
+} from "@utils/request"
 
 interface Params<FormShape extends ZodRawShape> {
   schema: ZodObject<FormShape>
@@ -27,11 +31,15 @@ export default function useAuth<FormShape extends ZodRawShape>({ schema, endpoin
   })
 
   const onSubmit = handleSubmit(
-    async (payload) => {
-      await fetch(endpoint, {
-        method: "POST",
-        body: JSON.stringify(payload),
-      })
+    async (body) => {
+      try {
+        const data = await request.post(endpoint, {
+          body,
+        })
+      } catch(error) {
+        const message = getErrorMessage(error)
+        console.log(message)
+      }
     }
   )
 

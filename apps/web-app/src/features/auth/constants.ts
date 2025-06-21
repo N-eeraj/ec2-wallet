@@ -21,8 +21,8 @@ export const LOGO_MOTION_PROPS: HTMLMotionProps<"div"> = {
 // auth card animation
 export const AUTH_CARD_BASE_MOTION_PROPS: HTMLMotionProps<"div"> = {
   transition: {
-    delay: 0.75,
-    duration: LOGO_ANIMATION_DURATION / 2,
+    delay: LOGO_ANIMATION_DURATION / 2,
+    duration: 0.5,
   },
 }
 export const AUTH_CARD_XS_MOTION_PROPS: HTMLMotionProps<"div"> = {
@@ -36,7 +36,7 @@ export const AUTH_CARD_XS_MOTION_PROPS: HTMLMotionProps<"div"> = {
 export const AUTH_CARD_CHILDREN_WRAPPER_MOTION_PROPS: HTMLMotionProps<"div"> = {
   variants: {
     initial: (direction: "left" | "right") => ({
-      x: direction === "right" ? "50%" : "-50%",
+      x: direction === "right" ? "100%" : "-100%",
       opacity: 0,
     }),
     animate: {
@@ -44,7 +44,7 @@ export const AUTH_CARD_CHILDREN_WRAPPER_MOTION_PROPS: HTMLMotionProps<"div"> = {
       opacity: 1,
     },
     exit: (direction: "left" | "right") => ({
-      x: direction === "right" ? "-50%" : "50%",
+      x: direction === "right" ? "-100%" : "100%",
       opacity: 0,
     }),
   },
@@ -52,6 +52,6 @@ export const AUTH_CARD_CHILDREN_WRAPPER_MOTION_PROPS: HTMLMotionProps<"div"> = {
   animate: "animate",
   exit: "exit",
   transition: {
-    duration: 0.2,
+    duration: 0.3,
   },
 }

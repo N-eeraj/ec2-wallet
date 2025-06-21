@@ -6,7 +6,7 @@ import useAuth from "@features/auth/hooks/useAuth"
 import Input from "@components/Input"
 import Button from "@components/Button"
 
-function LoginForm() {
+function RegisterForm() {
   const {
     register,
     errors,
@@ -44,10 +44,10 @@ function LoginForm() {
       <Button
         loading={isSubmitting}
         className="w-full">
-        Login
+        Register
       </Button>
     </form>
   )
 }
 
-export default LoginForm
+export default RegisterForm

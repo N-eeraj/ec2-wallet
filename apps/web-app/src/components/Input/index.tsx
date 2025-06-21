@@ -56,14 +56,16 @@ function Input({ type, errors, className, containerProps, ...props }: Props) {
             tabIndex={-1}
             className="absolute top-1 right-1 grid place-content-center size-8 hover:bg-background-secondary text-foreground-secondary/80 rounded-sm duration-300"
             onClick={togglePasswordVisibility}>
-            {passwordVisibility ?
-              <MotionEyeOff
-                {...PASSWORD_VISIBILITY_MOTION_PROPS}
-                size={18} /> :
-              <MotionEye
-                {...PASSWORD_VISIBILITY_MOTION_PROPS}
-                size={18} />
-            }
+            <AnimatePresence mode="sync">
+              {passwordVisibility ?
+                <MotionEyeOff
+                  {...PASSWORD_VISIBILITY_MOTION_PROPS}
+                  size={18} /> :
+                <MotionEye
+                  {...PASSWORD_VISIBILITY_MOTION_PROPS}
+                  size={18} />
+              }
+            </AnimatePresence>
           </button>
         )}
 
