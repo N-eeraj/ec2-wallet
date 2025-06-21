@@ -1,4 +1,5 @@
-import Welcome from "@features/authentication/components/Welcome"
+import Form from "@features/auth/components/Forms/Register"
+import Welcome from "@features/auth/components/Welcome"
 
 function Register() {
   return (
@@ -6,11 +7,7 @@ function Register() {
       <Welcome
         title="Welcome Aboard!"
         description="Create an account to get started." />
-      <form className="w-full">
-        <input className="w-full border border-foreground-faded/20" />
-        <input className="w-full border border-foreground-faded/20" />
-        <input className="w-full border border-foreground-faded/20" />
-      </form>
+      <Form />
     </>
   )
 }

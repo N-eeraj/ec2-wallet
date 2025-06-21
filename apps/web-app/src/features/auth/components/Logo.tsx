@@ -3,7 +3,7 @@ import {
 } from "motion/react"
 import {
   LOGO_MOTION_PROPS,
-} from "@features/authentication/constants"
+} from "@features/auth/constants"
 
 function Logo() {
   return (

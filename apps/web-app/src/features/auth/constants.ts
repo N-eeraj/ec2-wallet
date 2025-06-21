@@ -33,3 +33,25 @@ export const AUTH_CARD_XS_MOTION_PROPS: HTMLMotionProps<"div"> = {
     y: 0,
   },
 }
+export const AUTH_CARD_CHILDREN_WRAPPER_MOTION_PROPS: HTMLMotionProps<"div"> = {
+  variants: {
+    initial: (direction: "left" | "right") => ({
+      x: direction === "right" ? "50%" : "-50%",
+      opacity: 0,
+    }),
+    animate: {
+      x: 0,
+      opacity: 1,
+    },
+    exit: (direction: "left" | "right") => ({
+      x: direction === "right" ? "-50%" : "50%",
+      opacity: 0,
+    }),
+  },
+  initial: "initial",
+  animate: "animate",
+  exit: "exit",
+  transition: {
+    duration: 0.2,
+  },
+}

@@ -2,9 +2,9 @@ import {
   Outlet,
 } from "react-router"
 
-import AuthLogo from "@features/authentication/components/Logo"
-import AuthCard from "@features/authentication/components/Card"
-import Tab from "@features/authentication/components/Tab"
+import AuthLogo from "@features/auth/components/Logo"
+import AuthCard from "@features/auth/components/Card"
+import Tab from "@features/auth/components/Tab"
 
 function Auth() {
   return (

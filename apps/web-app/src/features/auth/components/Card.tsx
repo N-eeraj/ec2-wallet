@@ -6,7 +6,7 @@ import {
   motion,
   AnimatePresence,
 } from "motion/react"
-import useAuthCard from "@features/authentication/hooks/useAuthCard"
+import useAuthCard from "@features/auth/hooks/useAuthCard"
 
 interface Props extends PropsWithChildren {
   tab: FC
@@ -27,7 +27,7 @@ function Card({ children, tab: Tab }: Props) {
         mode="wait"
         custom={childrenWrapperAnimationDirection}>
         <motion.div
-          key={location.pathname}
+          key={childrenWrapperAnimationDirection}
           {...childrenWrapperMotionProps}
           className="flex flex-col gap-y-8 landscape:gap-y-4 w-full portrait:max-w-xs">
           {children}

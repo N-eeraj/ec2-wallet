@@ -9,7 +9,9 @@ import useMediaQuery from "@hooks/useMediaQuery"
 import {
   AUTH_CARD_BASE_MOTION_PROPS,
   AUTH_CARD_XS_MOTION_PROPS,
-} from "@features/authentication/constants"
+  AUTH_CARD_CHILDREN_WRAPPER_MOTION_PROPS,
+} from "@features/auth/constants"
+import { useMemo } from "react"
 
 export default function useAuthCard() {
   const location = useLocation()
@@ -24,31 +26,15 @@ export default function useAuthCard() {
     ...(isXs && AUTH_CARD_XS_MOTION_PROPS),
   }
 
-  const childrenWrapperAnimationDirection = location.pathname === "/login" ? "left" : "right"
+  const childrenWrapperAnimationDirection = useMemo(
+    () => location.pathname === "/login" ? "left" : "right", [
+    location.pathname,
+  ])
 
   const childrenWrapperMotionProps: HTMLMotionProps<"div"> = {
     ...(!isLandscape && {
-      variants: {
-        initial: (direction: "left" | "right") => ({
-          x: direction === "right" ? 100 : -100,
-          opacity: 0,
-        }),
-        animate: {
-          x: 0,
-          opacity: 1,
-        },
-        exit: (direction: "left" | "right") => ({
-          x: direction === "right" ? -100 : 100,
-          opacity: 0,
-        }),
-      },
+      ...AUTH_CARD_CHILDREN_WRAPPER_MOTION_PROPS,
       custom: childrenWrapperAnimationDirection,
-      initial: "initial",
-      animate: "animate",
-      exit: "exit",
-      transition: {
-        duration: 0.2,
-      },
     }),
   }
 

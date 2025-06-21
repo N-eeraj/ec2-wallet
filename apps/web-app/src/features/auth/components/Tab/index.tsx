@@ -2,7 +2,7 @@ import {
   useLocation,
 } from "react-router"
 import clsx from "clsx"
-import Switch from "@features/authentication/components/Tab/Switch"
+import Switch from "@features/auth/components/Tab/Switch"
 
 function Tab() {
   const location = useLocation()

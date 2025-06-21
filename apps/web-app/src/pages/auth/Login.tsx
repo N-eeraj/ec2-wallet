@@ -1,5 +1,5 @@
-import Form from "@/features/authentication/components/Forms/Login"
-import Welcome from "@features/authentication/components/Welcome"
+import Form from "@features/auth/components/Forms/Login"
+import Welcome from "@features/auth/components/Welcome"
 
 function Login() {
   return (
