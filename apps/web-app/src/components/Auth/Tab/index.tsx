@@ -1,28 +1,36 @@
-import { useLocation } from "react-router"
+import {
+  useLocation,
+} from "react-router"
 import clsx from "clsx"
 import Switch from "@components/Auth/Tab/Switch"
 
 function Tab() {
   const location = useLocation()
+  const isLoginPage = location.pathname === "/login"
+  const isRegisterPage = location.pathname === "/register"
 
   return (
-    <div className="relative flex w-xs mt-auto rounded-md border border-foreground-faded/25 overflow-hidden">
+    <div className="relative flex w-xs landscape:w-auto mt-auto rounded-md portrait:border border-foreground-faded/25 overflow-hidden">
       <div className={clsx(
-        "absolute w-1/2 h-full bg-primary-default rounded-md duration-300",
-        location.pathname === "/login" && "left-0",
-        location.pathname === "/register" && "left-1/2",
+        "absolute landscape:hidden w-1/2 h-full bg-primary-default rounded-md duration-300",
+        isLoginPage && "left-0",
+        isRegisterPage && "left-1/2",
       )} />
 
       <Switch
-        active={location.pathname === "/login"}
-        href="/login">
-        Existing User
-      </Switch>
+        active={isLoginPage}
+        href="/login"
+        text={{
+          label: "Existing User",
+          link: "Login",
+        }} />
       <Switch
-        active={location.pathname === "/register"}
-        href="/register">
-        New User
-      </Switch>
+        active={isRegisterPage}
+        href="/register"
+        text={{
+          label: "New User",
+          link: "Register",
+        }} />
     </div>
   )
 }

@@ -1,4 +1,6 @@
-import { createBrowserRouter  } from "react-router"
+import {
+  createBrowserRouter,
+} from "react-router"
 
 import Root from "@layouts/Root"
 

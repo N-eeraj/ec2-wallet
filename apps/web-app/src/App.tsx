@@ -1,4 +1,6 @@
-import { RouterProvider } from "react-router"
+import {
+  RouterProvider,
+} from "react-router"
 import router from "@router"
 import "@/main.css"
 
