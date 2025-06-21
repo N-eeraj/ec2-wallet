@@ -1,10 +1,15 @@
 import {
+  type FieldError,
+} from "react-hook-form"
+
+import {
   formSchema,
 } from "@features/auth/schemas/register"
 import useAuth from "@features/auth/hooks/useAuth"
 
 import Input from "@components/Input"
 import Button from "@components/Button"
+import ErrorMessage from "@components/Error"
 import {
   onPhoneInput,
 } from "@utils/input"
@@ -50,6 +55,8 @@ function RegisterForm() {
         className="w-full">
         Register
       </Button>
+
+      <ErrorMessage errors={errors.root as FieldError} />
     </form>
   )
 }

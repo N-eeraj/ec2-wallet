@@ -10,6 +10,8 @@ import {
 import {
   type FieldError,
 } from "react-hook-form"
+
+import ErrorMessage from "@components/Error"
 import clsx from "clsx"
 import {
   Eye,
@@ -17,7 +19,6 @@ import {
 } from "lucide-react"
 import {
   PASSWORD_VISIBILITY_MOTION_PROPS,
-  ERROR_MESSAGE_MOTION_PROPS,
 } from "@constants/motion"
 
 interface Props extends InputHTMLAttributes<HTMLInputElement> {
@@ -69,15 +70,7 @@ function Input({ type, errors, className, containerProps, ...props }: Props) {
           </button>
         )}
 
-        <AnimatePresence>
-          {errors && (
-            <motion.span
-              {...ERROR_MESSAGE_MOTION_PROPS}
-              className="text-foreground-error text-sm">
-              {errors.message}
-            </motion.span>
-          )}
-        </AnimatePresence>
+        <ErrorMessage errors={errors} />
     </div>
   )
 }

@@ -10,10 +10,8 @@ import {
 } from "zod"
 import request from "@lib/axios"
 import {
-  toast,
-} from "sonner"
-import {
   getErrorMessage,
+  getFormErrors,
 } from "@utils/request"
 
 interface Params<FormShape extends ZodRawShape> {
@@ -29,6 +27,8 @@ export default function useAuth<FormShape extends ZodRawShape>({ schema, endpoin
       errors,
       isSubmitting,
     },
+    setError,
+    clearErrors,
   } = useForm({
     resolver: zodResolver(schema),
   })
@@ -36,12 +36,21 @@ export default function useAuth<FormShape extends ZodRawShape>({ schema, endpoin
   const onSubmit = handleSubmit(
     async (body) => {
       try {
-        const data = await request.post(endpoint, {
-          body,
-        })
+        clearErrors()
+        const data = await request.post(endpoint, body)
         console.log(data)
       } catch(error) {
-        toast.error(getErrorMessage(error))
+        const formErrors = getFormErrors(error)
+        if (formErrors) {
+          formErrors
+            .forEach(({ field, message }) => {
+              setError(field, { message })
+            })
+        } else {
+          setError("root", {
+            message: getErrorMessage(error),
+          })
+        }
       }
     }
   )

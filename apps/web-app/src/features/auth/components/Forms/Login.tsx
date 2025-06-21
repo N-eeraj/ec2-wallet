@@ -1,10 +1,15 @@
 import {
+  type FieldError,
+} from "react-hook-form"
+
+import {
   formSchema,
 } from "@features/auth/schemas/login"
 import useAuth from "@features/auth/hooks/useAuth"
 
 import Input from "@components/Input"
 import Button from "@components/Button"
+import ErrorMessage from "@components/Error"
 import {
   onPhoneInput,
 } from "@utils/input"
@@ -44,6 +49,8 @@ function LoginForm() {
         className="w-full">
         Login
       </Button>
+
+      <ErrorMessage errors={errors.root as FieldError} />
     </form>
   )
 }

@@ -1,22 +1,60 @@
 import { DEFAULT_ERROR_MESSAGE } from "@constants/messages"
 
-export function getErrorMessage(error: unknown): string {
-  let message = DEFAULT_ERROR_MESSAGE
-
+export function getErrorResponse(error: unknown) {
   if (
     error &&
     typeof error === "object" &&
     "response" in error &&
     error.response &&
-    typeof error.response === "object" &&
-    "message" in error.response
-  ) {
-    message = String(error.response.message)
+    typeof error.response === "object"
+  ) return error.response
+
+  return null
+}
+
+export function getErrorResponseData(errorResponse: object) {
+  if ("data" in errorResponse && errorResponse.data) return errorResponse.data
+  return null
+}
+
+export function getErrorMessage(error: unknown): string {
+  let message = DEFAULT_ERROR_MESSAGE
+  const errorResponse = getErrorResponse(error)
+
+  if (errorResponse) {
+    const errorData = getErrorResponseData(errorResponse)
+    if (
+      errorData &&
+      typeof errorData === "object" &&
+      "message" in errorData
+    ) {
+      message = String(errorData.message)
+    } else if ("message" in errorResponse) {
+      message = String(errorResponse.message)
+    }
   }
 
-  if (error && typeof error === "object" && "message" in error) {
+  if (
+    !message &&
+    error &&
+    typeof error === "object" &&
+    "message" in error
+  ) {
     message = String(error.message)
   }
 
   return message || DEFAULT_ERROR_MESSAGE
+}
+
+export function getFormErrors(error: unknown) {
+  const errorData = getErrorResponseData(getErrorResponse(error) ?? {})
+  if (
+    errorData &&
+    typeof errorData === "object" &&
+    "status" in errorData &&
+    "errors" in errorData &&
+    [400, 422].includes(Number(errorData.status)) &&
+    Array.isArray(errorData.errors)
+  ) return errorData.errors
+  return null
 }
