@@ -1,7 +1,4 @@
 import {
-  useNavigate,
-} from "react-router"
-import {
   useForm,
 } from "react-hook-form"
 import {
@@ -12,6 +9,7 @@ import {
   type ZodRawShape,
 } from "zod/v4"
 import Cookies from "js-cookie"
+import userStore from "@stores/user"
 import request from "@lib/axios"
 import {
   getErrorMessage,
@@ -24,7 +22,7 @@ interface Params<FormShape extends ZodRawShape> {
 }
 
 export default function useAuth<FormShape extends ZodRawShape>({ schema, endpoint }: Params<FormShape>) {
-  const navigate = useNavigate()
+  const setUser = userStore((state) => state.setUser)
 
   const {
     register,
@@ -44,9 +42,8 @@ export default function useAuth<FormShape extends ZodRawShape>({ schema, endpoin
       try {
         clearErrors()
         const { data } = await request.post(endpoint, body)
-        // data.data
         Cookies.set("authToken", data.data.token)
-        navigate("/")
+        setUser(data.data)
       } catch(error) {
         const formErrors = getFormErrors(error)
         if (formErrors) {

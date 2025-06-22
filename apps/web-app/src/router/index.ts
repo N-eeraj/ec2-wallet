@@ -5,8 +5,8 @@ import {
 import Root from "@layouts/Root"
 
 // routes
-import Home from "@pages/Home"
 import authRoutes from "@router/routes/auth"
+import userRoutes from "@router/routes/user"
 import PageNotFound from "@pages/PageNotFound"
 
 const router = createBrowserRouter([
@@ -14,11 +14,8 @@ const router = createBrowserRouter([
     path: "/",
     Component: Root,
     children: [
-      {
-        index: true,
-        Component: Home,
-      },
       authRoutes,
+      userRoutes,
       {
         path: "*",
         Component: PageNotFound,

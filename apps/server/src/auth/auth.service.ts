@@ -9,13 +9,6 @@ import { LoginUserDto } from "./dto/login-user"
 @Injectable()
 export class AuthService {
   async registerUser(registerUserDto: RegisterUserDto) {
-    if (registerUserDto.password !== "123123" ) {
-      throw new HttpException({
-          status: HttpStatus.UNAUTHORIZED,
-          message: "Incorrect credentials",
-        }, HttpStatus.UNAUTHORIZED
-      )
-    }
     const user = {
       name: "John Doe",
       phone: "9876543210",
