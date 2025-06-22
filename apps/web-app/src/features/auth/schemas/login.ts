@@ -1,16 +1,17 @@
-import { z } from "zod"
+import { z } from "zod/v4"
+import {
+  formSchema as registerFormSchema,
+} from "@features/auth/schemas/register"
 
-export const formSchema = z.object({
-  phone: z.string({
-      message: "Please enter your phone number",
-    }).regex(/^\d{10,11}$/, {
-      message: "Please enter a valid phone number",
-    }),
-  password: z.string({
-      message: "Please enter your password",
-    }).min(1, {
-      message: "Please enter your password",
-    }),
-}).required()
+export const formSchema = registerFormSchema
+  .omit({
+    name: true,
+  }).extend({
+    password: z.string({
+      error: "Please enter your password",
+    }).nonempty({
+      error: "Please enter your password",
+    })
+  })
 
 export type FormSchema = z.infer<typeof formSchema>

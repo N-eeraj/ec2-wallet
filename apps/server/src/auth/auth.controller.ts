@@ -6,6 +6,7 @@ import {
 } from "@nestjs/common"
 import { AuthService } from "./auth.service"
 import { RegisterUserDto } from "./dto/register-user"
+import { LoginUserDto } from "./dto/login-user"
 
 
 @Controller()
@@ -14,20 +15,19 @@ export class AuthController {
 
   @Post("register")
   async register(@Body() registerUserDto: RegisterUserDto) {
-    console.log(registerUserDto)
-    const user = await this.authService.registerUser()
+    const user = await this.authService.registerUser(registerUserDto)
     return {
-      user,
+      data: user,
       message: "Registration Successful"
     }
   }
 
   @Post("login")
   @HttpCode(200)
-  async login() {
-    const user = await this.authService.loginUser()
+  async login(@Body() loginUserDto: LoginUserDto) {
+    const user = await this.authService.loginUser(loginUserDto)
     return {
-      user,
+      data: user,
       message: "Login Successful"
     }
   }

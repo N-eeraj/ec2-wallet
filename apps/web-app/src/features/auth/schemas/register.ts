@@ -1,4 +1,4 @@
-import { z } from "zod"
+import { z } from "zod/v4"
 
 import {
   MIN_NAME_LENGTH,
@@ -11,19 +11,19 @@ const phoneRegex = new RegExp(`^\\d{${MIN_PHONE_LENGTH},${MAX_PHONE_LENGTH}}$`)
 
 export const formSchema = z.object({
   name: z.string({
-      message: "Please enter your name",
+      error: "Please enter your name",
     }).min(MIN_NAME_LENGTH, {
-      message: `Please enter at least ${MIN_NAME_LENGTH} letters`,
+      error: `Please enter at least ${MIN_NAME_LENGTH} letters`,
     }),
   phone: z.string({
-      message: "Please enter your phone number",
+      error: "Please enter your phone number",
     }).regex(phoneRegex, {
-      message: "Please enter a valid phone number",
+      error: "Please enter a valid phone number",
     }),
   password: z.string({
-      message: "Please enter your password",
+      error: "Please enter your password",
     }).min(MIN_PASSWORD_LENGTH, {
-      message: `Password must be at least ${MIN_PASSWORD_LENGTH} characters`,
+      error: `Password must be at least ${MIN_PASSWORD_LENGTH} characters`,
     }),
 }).required()
 
