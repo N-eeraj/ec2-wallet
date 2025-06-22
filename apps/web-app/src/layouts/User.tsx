@@ -1,26 +1,39 @@
 import {
+  useCallback,
   useEffect,
 } from "react"
 import {
   Outlet,
-  useNavigate,
 } from "react-router"
-
+import useLayoutGuard from "@hooks/useLayoutGuard"
 import userStore from "@stores/user"
+import request from "@lib/axios"
 
 function Auth() {
-  const navigate = useNavigate()
-  const isUserLoggedIn = userStore((state) => state.isUserLoggedIn)
+  useLayoutGuard({
+    loginState: true,
+    redirectTo: "/login"
+  })
+
+  const {
+    setUser,
+    clearUser,
+  } = userStore()
+
+  const fetchUser = useCallback(
+    async () => {
+      try {
+        const { data } = await request.get("/user")
+        setUser(data)
+      } catch (error) {
+        clearUser()
+      }
+    }, [
+  ])
 
   useEffect(() => {
-    if (!isUserLoggedIn) {
-      navigate("/login", {
-        replace: true,
-      })
-    }
-  }, [
-    isUserLoggedIn,
-  ])
+    fetchUser()
+  }, [])
 
   return (
     <main className="">

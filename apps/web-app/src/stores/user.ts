@@ -3,11 +3,10 @@ import {
 } from "zustand"
 import Cookies from "js-cookie"
 
-interface User {
+export interface User {
   id: string
   name: string
   phone: string
-  token: string
 }
 
 interface UserStore {
