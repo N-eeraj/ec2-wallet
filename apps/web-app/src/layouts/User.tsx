@@ -1,5 +1,4 @@
 import {
-  useCallback,
   useEffect,
 } from "react"
 import {
@@ -15,23 +14,19 @@ function Auth() {
     redirectTo: "/login"
   })
 
-  const {
-    setUser,
-    clearUser,
-  } = userStore()
+  const setUser = userStore(({ setUser }) => setUser)
+  const clearUser = userStore(({ clearUser }) => clearUser)
 
-  const fetchUser = useCallback(
-    async () => {
+  useEffect(() => {
+    const fetchUser = async () => {
       try {
         const { data } = await request.get("/user")
         setUser(data)
       } catch (error) {
         clearUser()
       }
-    }, [
-  ])
+    }
 
-  useEffect(() => {
     fetchUser()
   }, [])
 

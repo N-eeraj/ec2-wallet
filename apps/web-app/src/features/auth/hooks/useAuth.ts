@@ -22,7 +22,7 @@ interface Params<FormShape extends ZodRawShape> {
 }
 
 export default function useAuth<FormShape extends ZodRawShape>({ schema, endpoint }: Params<FormShape>) {
-  const setUser = userStore((state) => state.setUser)
+  const setUser = userStore(({ setUser }) => setUser)
 
   const {
     register,

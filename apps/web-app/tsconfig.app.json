@@ -34,6 +34,7 @@
       "@lib/*": ["./src/lib/*"],
       "@utils/*": ["./src/utils/*"],
       "@constants/*": ["./src/constants/*"],
+      "@styles/*": ["./src/styles/*"],
     }
   },
   "include": ["src"]

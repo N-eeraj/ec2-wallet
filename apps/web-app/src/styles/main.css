@@ -1,0 +1,49 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-background-primary: var(--background-primary);
+  --color-background-secondary: var(--background-secondary);
+  --color-background-success: var(--background-success);
+  --color-background-info: var(--background-info);
+  --color-background-warn: var(--background-warn);
+  --color-background-error: var(--background-error);
+  --color-foreground-primary: var(--foreground-primary);
+
+  --color-foreground-primary-inverted: var(--foreground-primary-inverted);
+  --color-foreground-secondary: var(--foreground-secondary);
+  --color-foreground-secondary-inverted: var(--foreground-secondary-inverted);
+  --color-foreground-faded: var(--foreground-faded);
+  --color-foreground-faded-inverted: var(--foreground-faded-inverted);
+  --color-foreground-disabled: var(--foreground-disabled);
+  --color-foreground-disabled-inverted: var(--foreground-disabled-inverted);
+  --color-foreground-success: var(--foreground-success);
+  --color-foreground-info: var(--foreground-info);
+  --color-foreground-warn: var(--foreground-warn);
+  --color-foreground-error: var(--foreground-error);
+
+  --color-link-default: var(--link-default);
+  --color-link-default-inverted: var(--link-default-inverted);
+  --color-link-hover: var(--link-hover);
+  --color-link-hover-inverted: var(--link-hover-inverted);
+
+  --color-primary-default: var(--primary-default);
+  --color-primary-hover: var(--primary-hover);
+
+  --font-ember: "Ember", sans-serif;
+}
+
+html {
+  ::selection {
+    @apply bg-primary-default/40 text-foreground-primary;
+  }
+
+  body {
+    @apply bg-background-primary text-foreground-primary font-ember overflow-x-hidden;
+  
+    button, a {
+      @apply cursor-pointer;
+    }
+  }
+}

@@ -14,7 +14,7 @@ interface GuardOptions {
 
 export default function useLayoutGuard({ loginState, redirectTo }: GuardOptions) {
   const navigate = useNavigate()
-  const isUserLoggedIn = userStore((state) => state.isUserLoggedIn)
+  const isUserLoggedIn = userStore(({ isUserLoggedIn }) => isUserLoggedIn)
 
   useEffect(() => {
     if (isUserLoggedIn !== loginState) {

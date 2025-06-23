@@ -2,7 +2,9 @@ import {
   RouterProvider,
 } from "react-router"
 import router from "@router"
-import "@/main.css"
+
+import "@styles/themes.css"
+import "@styles/main.css"
 
 function App() {
   return (

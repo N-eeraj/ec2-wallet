@@ -1,0 +1,80 @@
+@font-face {
+  font-family: "Ember";
+  src: url("/fonts/ember/light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Ember";
+  src: url("/fonts/ember/medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Ember";
+  src: url("/fonts/ember/bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+:root {
+  --background-primary: #fff;
+  --background-secondary: #f3f3f7;
+  --background-success: #d9ffd6;
+  --background-info: #d1f1ff;
+  --background-warn: #ffe8bd;
+  --background-error: #ffe0e0;
+  --foreground-primary: #161d26;
+
+  --foreground-primary-inverted: #e9e2d9;
+  --foreground-secondary: #232b37;
+  --foreground-secondary-inverted: #dbd4c8;
+  --foreground-faded: #72747e;
+  --foreground-faded-inverted: #8d8b81;
+  --foreground-disabled: #b4b4bb;
+  --foreground-disabled-inverted: #4b4b44;
+  --foreground-success: #00802f;
+  --foreground-info: #006ce0;
+  --foreground-warn: #d14600;
+  --foreground-error: #db0000;
+
+  --link-default: #006ce0;
+  --link-default-inverted: #00a2ff;
+  --link-hover: #003b8f;
+  --link-hover-inverted: #0076ff;
+
+  --primary-default: #f7981f;
+  --primary-hover: #e87c2e;
+}
+
+.dark {
+  --background-primary: #161d26;
+  --background-secondary: #232b37;
+  --background-success: #064006;
+  --background-info: #003a5d;
+  --background-warn: #4a2a00;
+  --background-error: #4d0000;
+
+  --foreground-primary: #e9e2d9;
+  --foreground-primary-inverted: #161d26;
+  --foreground-secondary: #dbd4c8;
+  --foreground-secondary-inverted: #232b37;
+  --foreground-faded: #8d8b81;
+  --foreground-faded-inverted: #72747e;
+  --foreground-disabled: #4b4b44;
+  --foreground-disabled-inverted: #b4b4bb;
+  --foreground-success: #66d16f;
+  --foreground-info: #4db7ff;
+  --foreground-warn: #ffad5e;
+  --foreground-error: #ff6464;
+
+  --link-default: #00a2ff;
+  --link-default-inverted: #006ce0;
+  --link-hover: #0076ff;
+  --link-hover-inverted: #003b8f;
+
+  --primary-default: #e87c2e;
+  --primary-hover: #f7981f;
+}
