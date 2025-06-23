@@ -1,7 +1,3 @@
-import {
-  createBrowserRouter,
-} from "react-router"
-
 import Root from "@layouts/Root"
 
 // routes
@@ -9,7 +5,7 @@ import authRoutes from "@router/routes/auth"
 import userRoutes from "@router/routes/user"
 import PageNotFound from "@pages/PageNotFound"
 
-const router = createBrowserRouter([
+const routes = [
   {
     path: "/",
     Component: Root,
@@ -22,6 +18,6 @@ const router = createBrowserRouter([
       },
     ],
   },
-])
+]
 
-export default router
+export default routes

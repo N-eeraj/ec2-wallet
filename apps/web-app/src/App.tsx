@@ -1,14 +1,14 @@
-import {
-  RouterProvider,
-} from "react-router"
-import router from "@router"
+import AppRouter from "@router"
+import AppQueryClient from "@/QueryClient"
 
 import "@styles/themes.css"
 import "@styles/main.css"
 
 function App() {
   return (
-    <RouterProvider router={router} />
+    <AppQueryClient>
+      <AppRouter />
+    </AppQueryClient>
   )
 }
 
