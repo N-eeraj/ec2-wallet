@@ -1,60 +1,18 @@
 import {
   Outlet,
 } from "react-router"
-import {
-  useQuery,
-} from "@tanstack/react-query"
-
-import useLayoutGuard from "@hooks/useLayoutGuard"
-import userStore from "@stores/user"
-import request from "@lib/axios"
-import {
-  USER_FETCH_FAILED_MESSAGE,
-} from "@constants/messages"
-
-const fetchUser = async () => {
-  const { data } = await request.get("/user")
-  return data
-}
+import useUserLayout from "@hooks/useUserLayout"
+import SplashScreen from "@components/SplashScreen"
+import ErrorScreen from "@components/ErrorScreen"
 
 function Auth() {
-  useLayoutGuard({
-    loginState: true,
-    redirectTo: "/login"
-  })
-
-  const setUser = userStore(({ setUser }) => setUser)
-  const clearUser = userStore(({ clearUser }) => clearUser)
-
   const {
-    data,
     isError,
     isFetching,
-  } = useQuery({
-    queryKey: [
-      "user",
-    ],
-    queryFn: fetchUser,
-  })
+  } = useUserLayout()
 
-  if (isFetching) {
-    return (
-      <>
-        Loading
-      </>
-    )
-  }
-
-  if (isError) {
-    clearUser()
-    return (
-      <>
-        {USER_FETCH_FAILED_MESSAGE}
-      </>
-    )
-  }
-
-  setUser(data)
+  if (isFetching) return <SplashScreen />
+  if (isError) return <ErrorScreen />
 
   return (
     <main className="">

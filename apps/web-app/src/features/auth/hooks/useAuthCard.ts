@@ -11,7 +11,9 @@ import {
   AUTH_CARD_XS_MOTION_PROPS,
   AUTH_CARD_CHILDREN_WRAPPER_MOTION_PROPS,
 } from "@features/auth/constants"
-import { useMemo } from "react"
+import {
+  useMemo,
+} from "react"
 
 export default function useAuthCard() {
   const location = useLocation()

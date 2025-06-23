@@ -1,4 +1,6 @@
-import { DEFAULT_ERROR_MESSAGE } from "@constants/messages"
+import {
+  DEFAULT_ERROR_MESSAGE,
+} from "@constants/messages"
 
 export function getErrorResponse(error: unknown) {
   if (
@@ -44,6 +46,18 @@ export function getErrorMessage(error: unknown): string {
   }
 
   return message || DEFAULT_ERROR_MESSAGE
+}
+
+export function getErrorStatus(error: unknown) {
+  const errorResponse = getErrorResponse(error) ?? {}
+  if (
+    errorResponse &&
+    typeof errorResponse === "object" &&
+    "status" in errorResponse
+  ) {
+    return Number(errorResponse.status)
+  }
+  return null
 }
 
 export function getFormErrors(error: unknown) {
