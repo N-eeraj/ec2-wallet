@@ -1,12 +1,26 @@
 import {
-  USER_FETCH_FAILED_MESSAGE,
+  USER_FETCH_FAILED,
 } from "@constants/messages"
+
+const {
+  title,
+  message,
+} = USER_FETCH_FAILED
 
 function ErrorScreen() {
   return (
-    <div>
-      {USER_FETCH_FAILED_MESSAGE}
-    </div>
+    <main className="flex flex-col justify-center gap-y-1 md:gap-y-4 w-screen landscape:w-3xl h-svh landscape:mx-auto p-10">
+      <h2 className="text-foreground-faded text-7xl md:text-9xl landscape:text-8xl font-light text-start">
+        {title}
+      </h2>
+      <span className="text-foreground-faded/75 text-3xl md:text-6xl landscape:text-4xl font-light">
+        {message}
+      </span>
+      <img
+        src="/images/error-illustration.webp"
+        alt="error illustration decorator"
+        className="w-full max-w-xl max-h-80 mx-auto object-contain" />
+    </main>
   )
 }
 

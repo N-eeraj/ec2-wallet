@@ -10,11 +10,14 @@ import { LoginUserDto } from "./dto/login-user"
 export class AuthService {
   async registerUser(registerUserDto: RegisterUserDto) {
     const user = {
+      id: 123,
       name: "John Doe",
       phone: "9876543210",
+    }
+    return {
+      user,
       token: "8as9f3ddr34sdfUIas2312ds3Of34r",
     }
-    return user
   }
 
   async loginUser(loginUserDto: LoginUserDto) {
@@ -26,11 +29,14 @@ export class AuthService {
       )
     }
     const user = {
+      id: 123,
       name: "John Doe",
       phone: "9876543210",
+    }
+    return {
+      user,
       token: "8as9f3ddr34sdfUIas2312ds3Of34r",
     }
-    return user
   }
 
   async logoutUser() {

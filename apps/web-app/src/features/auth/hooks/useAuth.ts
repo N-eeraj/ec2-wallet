@@ -43,7 +43,7 @@ export default function useAuth<FormShape extends ZodRawShape>({ schema, endpoin
         clearErrors()
         const { data } = await request.post(endpoint, body)
         Cookies.set("authToken", data.data.token)
-        setUser(data.data)
+        setUser(data.data.user)
       } catch (error) {
         const formErrors = getFormErrors(error)
         if (formErrors) {

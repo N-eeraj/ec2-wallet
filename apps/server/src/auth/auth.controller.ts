@@ -15,9 +15,9 @@ export class AuthController {
 
   @Post("register")
   async register(@Body() registerUserDto: RegisterUserDto) {
-    const user = await this.authService.registerUser(registerUserDto)
+    const data = await this.authService.registerUser(registerUserDto)
     return {
-      data: user,
+      data,
       message: "Registration Successful"
     }
   }
@@ -25,9 +25,9 @@ export class AuthController {
   @Post("login")
   @HttpCode(200)
   async login(@Body() loginUserDto: LoginUserDto) {
-    const user = await this.authService.loginUser(loginUserDto)
+    const data = await this.authService.loginUser(loginUserDto)
     return {
-      data: user,
+      data,
       message: "Login Successful"
     }
   }
