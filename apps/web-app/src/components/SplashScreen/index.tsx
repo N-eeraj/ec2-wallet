@@ -1,6 +1,19 @@
+import Card from "@components/SplashScreen/Card"
+import {
+  CARD_ANIMATIONS,
+} from "./constants"
+
 function SplashScreen() {
   return (
-    <div>SplashScreen</div>
+    <main className="grid place-content-center w-screen h-svh bg-background-primary">
+      <div className="relative w-48 aspect-video">
+        {CARD_ANIMATIONS.map((animations, index) => (
+          <Card
+            key={index}
+            {...animations} />
+        ))}
+      </div>
+    </main>
   )
 }
 
