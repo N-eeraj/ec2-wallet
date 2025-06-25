@@ -1,3 +1,4 @@
+import Button from "@components/Button"
 import {
   USER_FETCH_FAILED,
 } from "@constants/messages"
@@ -6,6 +7,8 @@ const {
   title,
   message,
 } = USER_FETCH_FAILED
+
+const reload = () => location.reload()
 
 function ErrorScreen() {
   return (
@@ -20,6 +23,9 @@ function ErrorScreen() {
         src="/images/error-illustration.webp"
         alt="error illustration decorator"
         className="w-full max-w-xl max-h-80 mx-auto object-contain" />
+      <Button onClick={reload}>
+        Refresh
+      </Button>
     </main>
   )
 }
