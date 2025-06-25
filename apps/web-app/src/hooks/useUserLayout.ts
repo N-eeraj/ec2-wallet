@@ -24,7 +24,7 @@ export default function useUserLayout() {
   const fetchUser = useCallback(async () => {
     try {
       const { data } = await request.get("/user")
-      setUser(data)
+      setUser(data.data)
       return data
     } catch (error) {
       const status = getErrorStatus(error)

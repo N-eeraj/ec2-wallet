@@ -9,7 +9,7 @@ import useAuth from "@features/auth/hooks/useAuth"
 
 import Input from "@components/Input"
 import Button from "@components/Button"
-import ErrorMessage from "@components/Error"
+import ErrorMessage from "@components/ErrorMessage"
 import {
   onPhoneInput,
 } from "@utils/input"

@@ -1,9 +1,11 @@
 import {
   Outlet,
 } from "react-router"
-import useUserLayout from "@hooks/useUserLayout"
+
 import SplashScreen from "@components/SplashScreen"
 import ErrorScreen from "@components/ErrorScreen"
+import Navbar from "@components/Navbar"
+import useUserLayout from "@hooks/useUserLayout"
 
 function Auth() {
   const {
@@ -15,9 +17,12 @@ function Auth() {
   if (isError) return <ErrorScreen />
 
   return (
-    <main className="">
-      <Outlet />
-    </main>
+    <>
+      <Navbar />
+      <main>
+        <Outlet />
+      </main>
+      </>
   )
 }
 

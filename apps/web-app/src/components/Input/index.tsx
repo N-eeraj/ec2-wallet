@@ -11,7 +11,7 @@ import {
   type FieldError,
 } from "react-hook-form"
 
-import ErrorMessage from "@components/Error"
+import ErrorMessage from "@components/ErrorMessage"
 import clsx from "clsx"
 import {
   Eye,
