@@ -40,6 +40,10 @@ export default function useMenu() {
 
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const menuListRef = useClickAway(() => setIsMenuOpen(false))
+  const withCloseMenu = (fn: Function | undefined) => {
+    setIsMenuOpen(false)
+    fn?.()
+  }
 
   const {
     mutate: logoutMutate,
@@ -74,11 +78,11 @@ export default function useMenu() {
   const navigation: Array<MenuItemProps> = [
     {
       text: "Profile",
-      action: () => navigate("/profile"),
+      action: () => withCloseMenu(() => navigate("/profile")),
     },
     {
       text: "Settings",
-      action: () => navigate("/settings"),
+      action: () => withCloseMenu(() => navigate("/settings")),
     },
     {
       text: "Logout",

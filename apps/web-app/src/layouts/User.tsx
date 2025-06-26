@@ -19,10 +19,10 @@ function Auth() {
   return (
     <>
       <Navbar />
-      <main>
+      <main className="p-4">
         <Outlet />
       </main>
-      </>
+    </>
   )
 }
 

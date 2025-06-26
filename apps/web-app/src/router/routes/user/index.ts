@@ -1,6 +1,9 @@
 import User from "@layouts/User"
 
-import Home from "@pages/Home"
+import Home from "@pages/user/Home"
+import Profile from "@pages/user/Profile"
+import Settings from "@pages/user/Settings"
+import SetupPin from "@pages/user/SetupPin"
 
 const userRoutes = {
   Component: User,
@@ -9,6 +12,18 @@ const userRoutes = {
       index: true,
       Component: Home,
     },
+    {
+      path: "profile",
+      Component: Profile,
+    },
+    {
+      path: "settings",
+      Component: Settings,
+    },
+    {
+      path : "setup-pin",
+      Component: SetupPin,
+    }
   ],
 }
 

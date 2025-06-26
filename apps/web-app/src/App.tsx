@@ -3,6 +3,7 @@ import AppQueryClient from "@/QueryClient"
 
 import "@styles/themes.css"
 import "@styles/main.css"
+import "@styles/utilities.css"
 
 function App() {
   return (

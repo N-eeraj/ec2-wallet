@@ -7,6 +7,7 @@ export interface User {
   id: string
   name: string
   phone: string
+  isPinSet: boolean
 }
 
 interface UserStore {
