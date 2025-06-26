@@ -3,7 +3,7 @@ import {
 } from "motion/react"
 import {
   CARD_ANIMATION_TRANSITION,
-} from "./constants"
+} from "@constants/splashScreen"
 
 interface Props {
   top: Array<number>

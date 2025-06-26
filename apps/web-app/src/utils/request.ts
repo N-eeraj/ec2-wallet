@@ -62,13 +62,13 @@ export function getErrorStatus(error: unknown) {
 
 export function getFormErrors(error: unknown) {
   const errorData = getErrorResponseData(getErrorResponse(error) ?? {})
+  const status = getErrorStatus(error)
   if (
+    status &&
     errorData &&
     typeof errorData === "object" &&
-    "status" in errorData &&
     "errors" in errorData &&
-    [400, 422].includes(Number(errorData.status)) &&
-    Array.isArray(errorData.errors)
+    [400, 422].includes(status)
   ) return errorData.errors
   return null
 }

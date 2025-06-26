@@ -13,17 +13,20 @@ import {
 } from "@utils/request"
 
 export default function useUserLayout() {
-  useLayoutGuard({
+  const shouldUseLayout = useLayoutGuard({
     loginState: true,
     redirectTo: "/login"
   })
 
+  const user = userStore(({ user }) => user)
   const setUser = userStore(({ setUser }) => setUser)
   const clearUser = userStore(({ clearUser }) => clearUser)
 
   const fetchUser = useCallback(async () => {
     try {
-      const { data } = await request.get("/user")
+      const {
+        data,
+      } = await request.get("/user")
       setUser(data.data)
       return data
     } catch (error) {
@@ -43,6 +46,7 @@ export default function useUserLayout() {
       "user",
     ],
     queryFn: fetchUser,
+    enabled: shouldUseLayout && !user,
   })
 
   return {

@@ -8,6 +8,7 @@ import {
 import {
   useMutation,
 } from "@tanstack/react-query"
+import Cookies from "js-cookie"
 import {
   useClickAway,
 } from "@uidotdev/usehooks"
@@ -50,6 +51,7 @@ export default function useMenu() {
     },
     onSuccess: () => {
       clearUser()
+      Cookies.remove("authToken")
     }
   })
 

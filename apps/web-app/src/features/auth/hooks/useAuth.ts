@@ -15,6 +15,9 @@ import {
   getErrorMessage,
   getFormErrors,
 } from "@utils/request"
+import {
+  type FormErrorPath,
+} from "@dTypes/form"
 
 interface Params<FormShape extends ZodRawShape> {
   schema: ZodObject<FormShape>
@@ -41,15 +44,17 @@ export default function useAuth<FormShape extends ZodRawShape>({ schema, endpoin
     async (body) => {
       try {
         clearErrors()
-        const { data } = await request.post(endpoint, body)
+        const {
+          data,
+        } = await request.post(endpoint, body)
         Cookies.set("authToken", data.data.token)
         setUser(data.data.user)
       } catch (error) {
         const formErrors = getFormErrors(error)
         if (formErrors) {
-          formErrors
-            .forEach(({ field, message }) => {
-              setError(field, { message })
+          Object.entries(formErrors)
+            .forEach(([field, message]) => {
+              setError(field as FormErrorPath<FormShape>, { message })
             })
         } else {
           setError("root", {

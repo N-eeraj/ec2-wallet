@@ -12,13 +12,11 @@ export class ValidationErrorPipe implements PipeTransform {
   transform(value: any, metadata: ArgumentMetadata) {
     const validationPipe = new ValidationPipe({
       exceptionFactory: (errors) => {
-        const formattedErrors = errors.map(error => {
+        const formattedErrors = errors.reduce((formattedErrors, error) => {
           const constraints = error.constraints ? Object.values(error.constraints) : []
-          return {
-            field: error.property,
-            message: constraints,
-          }
-        })
+          formattedErrors[error.property] = constraints
+          return formattedErrors
+        }, {})
         throw new HttpException({
             status: HttpStatus.BAD_REQUEST,
             message: "Invalid Input",

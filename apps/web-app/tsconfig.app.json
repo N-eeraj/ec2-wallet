@@ -34,6 +34,7 @@
       "@lib/*": ["./src/lib/*"],
       "@utils/*": ["./src/utils/*"],
       "@constants/*": ["./src/constants/*"],
+      "@dTypes/*": ["./src/types/*"],
       "@styles/*": ["./src/styles/*"],
     }
   },

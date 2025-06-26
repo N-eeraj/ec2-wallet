@@ -1,7 +1,7 @@
 import Card from "@components/SplashScreen/Card"
 import {
   CARD_ANIMATIONS,
-} from "./constants"
+} from "@constants/splashScreen"
 
 function SplashScreen() {
   return (
