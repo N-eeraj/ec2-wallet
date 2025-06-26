@@ -4,9 +4,9 @@ import {
 }  from "motion/react"
 
 import {
-  useMenu,
   MenuItem,
 } from "@components/Navbar"
+import useMenu from "@hooks/useMenu"
 
 function Menu() {
   const {

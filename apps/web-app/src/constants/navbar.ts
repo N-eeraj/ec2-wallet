@@ -2,7 +2,7 @@ import {
   type HTMLMotionProps,
 }  from "motion/react"
 
-export const LIST_MOTION_PROPS: HTMLMotionProps<"ul"> = {
+export const MENU_LIST_MOTION_PROPS: HTMLMotionProps<"ul"> = {
   initial: {
     opacity: 0,
     y: "-100%",
