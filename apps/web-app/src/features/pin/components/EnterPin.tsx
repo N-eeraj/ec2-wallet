@@ -1,5 +1,6 @@
 import {
   useState,
+  type ReactNode,
 } from "react"
 import {
   PIN_DIGITS,
@@ -8,36 +9,62 @@ import {
 } from "@features/pin/constants"
 
 import clsx from "clsx"
+import {
+  Delete,
+} from "lucide-react"
 
 interface Props {
   title?: string
   description?: string
 }
 
+const keypad = Array.from({ length: 12 }).map((_, index) => {
+  let key: number | ReactNode | null = index + 1
+  if (index === 9) {
+    key = null
+  } else if (index === 10) {
+    key = 0
+  } else if (index === 11) {
+    key = <Delete className="mx-auto md:size-12 landscape:size-8" />
+  }
+  return {
+    key,
+    value: (index === 11 ? null : key) as number,
+  }
+})
+
 function EnterPin({ title = DEFAULT_TITLE, description = DEFAULT_DESCRIPTION }: Props) {
   const [pin, setPin] = useState("")
 
+  const onKeypadInput = (value: number | string) => {
+    if (pin.length === PIN_DIGITS) return
+    setPin((pin) => `${pin}${value}`)
+  }
+  const onDeleteInput = () => {
+    setPin(pin => pin.slice(0, -1))
+  }
+
   return (
-    <section className="fixed top-0 left-0 flex flex-col justify-evenly items-center gap-y-6 size-full px-6 py-10 bg-background-secondary z-40">
-      <div className="flex flex-col items-center gap-y-1">
+    <section className="fixed top-0 left-0 flex flex-col justify-evenly md:justify-center items-center gap-y-8 size-full px-6 py-10 bg-background-secondary z-40">
+      <div className="flex flex-col items-center gap-y-1 md:gap-y-2">
         <img
           src="/images/logo.svg"
           alt="EC2 Wallet Logo"
-          className="w-20 mb-6" />
-        <h2 className="w-5/6 text-lg font-bold text-center">
+          className="w-20 md:w-28 landscape:w-24 mb-6" />
+        <h2 className="w-5/6 text-lg md:text-3xl landscape:text-2xl font-bold text-center">
           {title}
         </h2>
-        <p className="w-3/4 text-foreground-faded/75 text-sm text-center">
+        <p className="w-3/4 text-foreground-faded/75 text-sm md:text-lg landscape:text-sm text-center">
           {description}
         </p>
       </div>
 
-      <ul className="flex gap-x-2">
+      <ul className="flex gap-x-2 md:gap-x-3.5">
         {Array.from({ length: PIN_DIGITS }).map((_, index) => (
           <li
             key={index}
             className={clsx(
-              "size-4 rounded-full border duration-300",
+              "size-4 md:size-6 landscape:size-4.5 rounded-full border duration-300",
               index < pin.length ?
                 "bg-gradient-to-br from-primary-default/80 to-primary-hover border-transparent" :
                 "bg-background-primary border-primary-default",
@@ -45,9 +72,19 @@ function EnterPin({ title = DEFAULT_TITLE, description = DEFAULT_DESCRIPTION }: 
         ))}
       </ul>
 
-      <div className="">
-
-      </div>
+      <ul className="grid grid-cols-3 w-full max-w-96 mt-auto md:mt-12">
+        {keypad.map(({ key, value }, index) => (
+          <li key={index}>
+            {key !== null && (
+              <button
+                className="size-full h-[min(10vh,80px)] hover:bg-primary-hover/20 text-2xl md:text-4xl landscape:text-2xl font-bold text-center rounded duration-300"
+                onClick={() => value === null ? onDeleteInput() : onKeypadInput(value)}>
+                {key}
+              </button>
+            )}
+          </li>
+        ))}
+      </ul>
     </section>
   )
 }
