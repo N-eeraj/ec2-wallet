@@ -1,48 +1,22 @@
 import {
-  useState,
-  type ReactNode,
-} from "react"
-import {
   PIN_DIGITS,
   DEFAULT_TITLE,
   DEFAULT_DESCRIPTION,
 } from "@features/pin/constants"
 
+import useEnterPin from "@features/pin/hooks/useEnterPin"
 import clsx from "clsx"
-import {
-  Delete,
-} from "lucide-react"
 
 interface Props {
   title?: string
   description?: string
 }
 
-const keypad = Array.from({ length: 12 }).map((_, index) => {
-  let key: number | ReactNode | null = index + 1
-  if (index === 9) {
-    key = null
-  } else if (index === 10) {
-    key = 0
-  } else if (index === 11) {
-    key = <Delete className="mx-auto md:size-12 landscape:size-8" />
-  }
-  return {
-    key,
-    value: (index === 11 ? null : key) as number,
-  }
-})
-
 function EnterPin({ title = DEFAULT_TITLE, description = DEFAULT_DESCRIPTION }: Props) {
-  const [pin, setPin] = useState("")
-
-  const onKeypadInput = (value: number | string) => {
-    if (pin.length === PIN_DIGITS) return
-    setPin((pin) => `${pin}${value}`)
-  }
-  const onDeleteInput = () => {
-    setPin(pin => pin.slice(0, -1))
-  }
+  const {
+    pin,
+    keypad,
+  } = useEnterPin()
 
   return (
     <section className="fixed top-0 left-0 flex flex-col justify-evenly md:justify-center items-center gap-y-8 size-full px-6 py-10 bg-background-secondary z-40">
@@ -73,12 +47,12 @@ function EnterPin({ title = DEFAULT_TITLE, description = DEFAULT_DESCRIPTION }: 
       </ul>
 
       <ul className="grid grid-cols-3 w-full max-w-96 mt-auto md:mt-12">
-        {keypad.map(({ key, value }, index) => (
+        {keypad.map(({ key, action }, index) => (
           <li key={index}>
             {key !== null && (
               <button
                 className="size-full h-[min(10vh,80px)] hover:bg-primary-hover/20 text-2xl md:text-4xl landscape:text-2xl font-bold text-center rounded duration-300"
-                onClick={() => value === null ? onDeleteInput() : onKeypadInput(value)}>
+                onClick={action}>
                 {key}
               </button>
             )}
