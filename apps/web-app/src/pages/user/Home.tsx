@@ -1,4 +1,4 @@
-import AlertScreen from "@features/Pin/components/AlertScreen"
+import AlertScreen from "@features/pin/components/AlertScreen"
 import userStore from "@stores/user"
 
 function Home() {

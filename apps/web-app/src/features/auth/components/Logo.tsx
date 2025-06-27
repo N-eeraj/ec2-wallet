@@ -12,7 +12,7 @@ function Logo() {
       className="flex items-center gap-x-2 sm:gap-x-4 flex-1 landscape:flex-none">
       <img
         src="/images/logo.svg"
-        alt="ec2-wallet-logo"
+        alt="EC2 Wallet Logo"
         className="w-10 sm:w-20 landscape:w-16" />
       <h1 className="text-3xl sm:text-5xl landscape:text-[40px]">
         Wallet

@@ -9,7 +9,7 @@ function Brand() {
       className="flex items-center gap-x-2 md:gap-x-3 landscape:gap-x-2.5">
       <img
         src="/images/logo.svg"
-        alt="ec2-wallet-logo"
+        alt="EC2 Wallet Logo"
         className="w-8 md:w-12 landscape:w-10" />
       <h2 className="text-xl md:text-3xl landscape:text-2xl">
         Wallet

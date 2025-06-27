@@ -2,7 +2,7 @@ import {
   NavLink,
 } from "react-router"
 import Button from "@components/Button"
-import PinAnimation from "@features/Pin/components/PinAnimation"
+import PinAnimation from "@features/pin/components/PinAnimation"
 
 function AlertScreen() {
   return (

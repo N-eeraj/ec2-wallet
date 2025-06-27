@@ -4,9 +4,9 @@ import {
 } from "motion/react"
 import {
   PIN_ANIMATION_FRAMES,
-  PIN_ANIMATION_DIGIT_COUNT,
+  PIN_DIGITS,
   PIN_ANIMATION_TRANSITION,
-} from "@features/pin/constants/alertAnimation"
+} from "@features/pin/constants"
 
 // generate animation keyframes for progress bar
 const progressAnimation: HTMLMotionProps<"div"> = {
@@ -35,12 +35,12 @@ function PinAnimation() {
       
 
       <div className="flex justify-evenly w-full pt-3 border-2 border-foreground-faded/75 rounded-md">
-        {Array.from({ length: PIN_ANIMATION_DIGIT_COUNT }).map((_, index) => (
+        {Array.from({ length: PIN_DIGITS }).map((_, index) => (
           <motion.h3
             key={index}
             animate={{
-              opacity: [0, ...Array.from({ length: PIN_ANIMATION_DIGIT_COUNT + 4 }).map((_, i) => Number(i > index)), 0],
-              x: [-10, ...Array.from({ length: PIN_ANIMATION_DIGIT_COUNT + 4 }).map((_, i) => i > index ? 0 : -10), 0],
+              opacity: [0, ...Array.from({ length: PIN_DIGITS + 4 }).map((_, i) => Number(i > index)), 0],
+              x: [-10, ...Array.from({ length: PIN_DIGITS + 4 }).map((_, i) => i > index ? 0 : -10), 0],
             }}
             transition={PIN_ANIMATION_TRANSITION}
             className="text-primary-default text-6xl font-bold">
