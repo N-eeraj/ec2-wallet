@@ -3,7 +3,10 @@ import {
   DEFAULT_ENTER_PIN,
 } from "@features/pin/constants"
 import useEnterPin from "@features/pin/hooks/useEnterPin"
+import Keypad from "@components/Keypad"
 import {
+  Delete,
+  CheckCircle2,
   X,
 } from "lucide-react"
 import clsx from "clsx"
@@ -23,7 +26,9 @@ function EnterPin({
 }: Props) {
   const {
     pin,
-    keypad,
+    handleKeypadInput,
+    handleDeleteInput,
+    handleSubmit,
   } = useEnterPin(onSubmit)
 
   return (
@@ -60,19 +65,20 @@ function EnterPin({
         ))}
       </ul>
 
-      <ul className="grid grid-cols-3 w-full max-w-96 mt-auto md:mt-12">
-        {keypad.map(({ key, action }, index) => (
-          <li key={index}>
-            {key !== null && (
-              <button
-                className="size-full h-[min(10vh,80px)] hover:bg-primary-hover/20 text-2xl md:text-4xl landscape:text-2xl font-bold text-center rounded duration-300"
-                onClick={action}>
-                {key}
-              </button>
-            )}
-          </li>
-        ))}
-      </ul>
+      <Keypad
+        leftSlot={(
+          <Delete
+            className="mx-auto md:size-12 landscape:size-8"
+            onClick={handleDeleteInput} />
+        )}
+        rightSlot={(
+          <CheckCircle2
+            className="mx-auto md:size-12 landscape:size-8"
+            onClick={handleSubmit} />
+        )}
+        onClick={handleKeypadInput}
+        onDelete={handleDeleteInput}
+        onEnter={handleSubmit} />
     </section>
   )
 }
