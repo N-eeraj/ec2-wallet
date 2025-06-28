@@ -1,5 +1,6 @@
 import {
   useState,
+  useEffect,
   type ReactNode,
 } from "react"
 import {
@@ -16,7 +17,7 @@ import {
   CheckCircle2,
 } from "lucide-react"
 
-export default function useEnterPin() {
+export default function useEnterPin(submitHandler: (_pin: string) => void) {
   const [pin, setPin] = useState("")
 
   const handleKeypadInput = (value: number | string) => {
@@ -32,7 +33,7 @@ export default function useEnterPin() {
         duration: PIN_LENGTH_ERROR.duration,
       })
     }
-    console.log(pin)
+    submitHandler(pin)
   }
 
 
@@ -53,6 +54,20 @@ export default function useEnterPin() {
       action,
     }
   })
+
+  useEffect(() => {
+    const handleKeypress = ({ key }: KeyboardEvent) => {
+      if (key === "Backspace" || key === "Delete") {
+        handleDeleteInput()
+        return
+      }
+      if (isNaN(Number(key))) return
+      handleKeypadInput(key)
+    }
+    document.addEventListener("keydown", handleKeypress)
+
+    return () => document.removeEventListener("keydown", handleKeypress)
+  }, [])
 
   return {
     pin,

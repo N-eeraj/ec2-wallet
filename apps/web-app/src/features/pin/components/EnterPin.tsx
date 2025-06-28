@@ -1,25 +1,39 @@
 import {
   PIN_DIGITS,
-  DEFAULT_TITLE,
-  DEFAULT_DESCRIPTION,
+  DEFAULT_ENTER_PIN,
 } from "@features/pin/constants"
-
 import useEnterPin from "@features/pin/hooks/useEnterPin"
+import {
+  X,
+} from "lucide-react"
 import clsx from "clsx"
 
 interface Props {
   title?: string
   description?: string
+  onClose: () => void
+  onSubmit: (_pin: string) => void
 }
 
-function EnterPin({ title = DEFAULT_TITLE, description = DEFAULT_DESCRIPTION }: Props) {
+function EnterPin({
+  title = DEFAULT_ENTER_PIN.title,
+  description = DEFAULT_ENTER_PIN.description,
+  onClose,
+  onSubmit,
+}: Props) {
   const {
     pin,
     keypad,
-  } = useEnterPin()
+  } = useEnterPin(onSubmit)
 
   return (
     <section className="fixed top-0 left-0 flex flex-col justify-evenly md:justify-center items-center gap-y-8 size-full px-6 py-10 bg-background-secondary z-40">
+      <button
+        className="fixed top-2 left-2"
+        onClick={onClose}>
+        <X className="size-6" />
+      </button>
+
       <div className="flex flex-col items-center gap-y-1 md:gap-y-2">
         <img
           src="/images/logo.svg"
