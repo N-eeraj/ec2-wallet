@@ -26,3 +26,4 @@ export const SETUP_RE_ENTER_PIN = {
   title: `Re-enter a ${PIN_DIGITS} digit PIN`,
   description: `Please enter the same PIN as before to complete the EC2 Wallet PIN setup`,
 } as const
+export const PIN_MISMATCH_ERROR = "Entered PINs do not match" as const
