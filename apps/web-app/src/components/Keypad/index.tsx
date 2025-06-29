@@ -8,7 +8,6 @@ interface Props {
   rightSlot?: ReactNode
   onClick: (_key: string) => void
   onDelete?: () => void
-  onEnter?: () => void
 }
 
 type Key = number | "left-slot" | "right-slot"
@@ -25,7 +24,7 @@ const keypad = Array.from({ length: 12 }).map((_, index) => {
   return key
 })
 
-function Keypad({ leftSlot, rightSlot, onClick, onDelete, onEnter }: Props) {
+function Keypad({ leftSlot, rightSlot, onClick, onDelete }: Props) {
   const showButton = (key: Key) => {
     if (typeof key === "number") return true
     if (key === "left-slot") return Boolean(leftSlot)
@@ -36,10 +35,6 @@ function Keypad({ leftSlot, rightSlot, onClick, onDelete, onEnter }: Props) {
     const handleKeypress = ({ key }: KeyboardEvent) => {
       if (key === "Backspace" || key === "Delete") {
         onDelete?.()
-        return
-      }
-      if (key === "Enter") {
-        onEnter?.()
         return
       }
       if (isNaN(Number(key))) return

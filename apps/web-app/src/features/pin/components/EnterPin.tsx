@@ -1,15 +1,14 @@
 import {
-  PIN_DIGITS,
   DEFAULT_ENTER_PIN,
 } from "@features/pin/constants"
 import useEnterPin from "@features/pin/hooks/useEnterPin"
 import Keypad from "@components/Keypad"
+import PinView from "@components/PinView"
 import {
   Delete,
   CheckCircle2,
   X,
 } from "lucide-react"
-import clsx from "clsx"
 
 interface Props {
   title?: string
@@ -52,18 +51,7 @@ function EnterPin({
         </p>
       </div>
 
-      <ul className="flex gap-x-2 md:gap-x-3.5">
-        {Array.from({ length: PIN_DIGITS }).map((_, index) => (
-          <li
-            key={index}
-            className={clsx(
-              "size-4 md:size-6 landscape:size-4.5 rounded-full border duration-300",
-              index < pin.length ?
-                "bg-gradient-to-br from-primary-default/80 to-primary-hover border-transparent" :
-                "bg-background-primary border-primary-default",
-            )} />
-        ))}
-      </ul>
+      <PinView pin={pin} />
 
       <Keypad
         leftSlot={(
@@ -77,8 +65,7 @@ function EnterPin({
             onClick={handleSubmit} />
         )}
         onClick={handleKeypadInput}
-        onDelete={handleDeleteInput}
-        onEnter={handleSubmit} />
+        onDelete={handleDeleteInput} />
     </section>
   )
 }

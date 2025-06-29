@@ -17,14 +17,17 @@ export default function useEnterPin(submitHandler: (_pin: string) => void) {
     if (pin.length === PIN_DIGITS) return
     setPin((pin) => `${pin}${value}`)
   }
+
   const handleDeleteInput = () => {
     setPin(pin => pin.slice(0, -1))
   }
+
   const handleSubmit = () => {
     if (pin.length < PIN_DIGITS) {
-      return toast.error(PIN_LENGTH_ERROR.message, {
+      toast.error(PIN_LENGTH_ERROR.message, {
         duration: PIN_LENGTH_ERROR.duration,
       })
+      return
     }
     submitHandler(pin)
   }
