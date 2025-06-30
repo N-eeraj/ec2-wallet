@@ -13,7 +13,7 @@ import {
   QUERY_STALE_TIME,
 } from "@constants/time"
 
-const queryClient = new QueryClient({
+export const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
       retry: false,

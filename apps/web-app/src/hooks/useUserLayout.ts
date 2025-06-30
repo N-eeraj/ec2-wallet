@@ -18,7 +18,6 @@ export default function useUserLayout() {
     redirectTo: "/login"
   })
 
-  const user = userStore(({ user }) => user)
   const setUser = userStore(({ setUser }) => setUser)
   const clearUser = userStore(({ clearUser }) => clearUser)
 
@@ -46,7 +45,7 @@ export default function useUserLayout() {
       "user",
     ],
     queryFn: fetchUser,
-    enabled: shouldUseLayout && !user,
+    enabled: shouldUseLayout,
   })
 
   return {
