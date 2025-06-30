@@ -1,13 +1,15 @@
 import {
   useEffect,
-  type ReactNode,
 } from "react"
+import {
+  Delete,
+  CheckCircle2,
+} from "lucide-react"
 
 interface Props {
-  leftSlot?: ReactNode
-  rightSlot?: ReactNode
   onClick: (_key: string) => void
-  onDelete?: () => void
+  onDelete: () => void
+  onSubmit: () => void
 }
 
 type Key = number | "left-slot" | "right-slot"
@@ -24,13 +26,7 @@ const keypad = Array.from({ length: 12 }).map((_, index) => {
   return key
 })
 
-function Keypad({ leftSlot, rightSlot, onClick, onDelete }: Props) {
-  const showButton = (key: Key) => {
-    if (typeof key === "number") return true
-    if (key === "left-slot") return Boolean(leftSlot)
-    if (key === "right-slot") return Boolean(rightSlot)
-  }
-
+function Keypad({ onClick, onDelete, onSubmit }: Props) {
   useEffect(() => {
     const handleKeypress = ({ key }: KeyboardEvent) => {
       if (key === "Backspace" || key === "Delete") {
@@ -45,19 +41,31 @@ function Keypad({ leftSlot, rightSlot, onClick, onDelete }: Props) {
     return () => document.removeEventListener("keydown", handleKeypress)
   }, [])
 
+  const handleClick = (key: Key) => {
+    if (typeof key === "number") {
+      onClick(String(key))
+    } else if (key === "left-slot") {
+      onDelete?.()
+    } else if (key === "right-slot") {
+      onSubmit?.()
+    }
+  }
+
   return (
     <ul className="grid grid-cols-3 w-full max-w-96 mt-auto md:mt-12">
       {keypad.map((key, index) => (
         <li key={index}>
-          {showButton(key) && (
-            <button
-              className="size-full h-[min(10vh,80px)] hover:bg-primary-hover/20 text-2xl md:text-4xl landscape:text-2xl font-bold text-center rounded duration-300"
-              onClick={() => typeof key === "number" && onClick(String(key))}>
-              {key === "left-slot" && leftSlot}
-              {key === "right-slot" && rightSlot}
-              {typeof key === "number" && key}
-            </button>
-          )}
+          <button
+            className="size-full h-[min(10vh,80px)] hover:bg-primary-hover/20 text-2xl md:text-4xl landscape:text-2xl font-bold text-center rounded duration-300"
+            onClick={() => handleClick(key)}>
+            {key === "left-slot" && (
+              <Delete className="mx-auto md:size-12 landscape:size-8" />
+            )}
+            {key === "right-slot" && (
+              <CheckCircle2 className="mx-auto md:size-12 landscape:size-8" />
+            )}
+            {typeof key === "number" && key}
+          </button>
         </li>
       ))}
     </ul>

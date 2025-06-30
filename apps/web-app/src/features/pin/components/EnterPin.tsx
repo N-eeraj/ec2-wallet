@@ -5,8 +5,6 @@ import useEnterPin from "@features/pin/hooks/useEnterPin"
 import Keypad from "@components/Keypad"
 import PinView from "@components/PinView"
 import {
-  Delete,
-  CheckCircle2,
   X,
 } from "lucide-react"
 
@@ -54,18 +52,9 @@ function EnterPin({
       <PinView pin={pin} />
 
       <Keypad
-        leftSlot={(
-          <Delete
-            className="mx-auto md:size-12 landscape:size-8"
-            onClick={handleDeleteInput} />
-        )}
-        rightSlot={(
-          <CheckCircle2
-            className="mx-auto md:size-12 landscape:size-8"
-            onClick={handleSubmit} />
-        )}
         onClick={handleKeypadInput}
-        onDelete={handleDeleteInput} />
+        onDelete={handleDeleteInput}
+        onSubmit={handleSubmit} />
     </section>
   )
 }

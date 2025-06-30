@@ -15,7 +15,7 @@ export default function useEnterPin(submitHandler: (_pin: string) => void) {
 
   const handleKeypadInput = (value: number | string) => {
     if (pin.length === PIN_DIGITS) return
-    setPin((pin) => `${pin}${value}`)
+    setPin((pin) => `${pin}${value}`.slice(0, 6))
   }
 
   const handleDeleteInput = () => {
