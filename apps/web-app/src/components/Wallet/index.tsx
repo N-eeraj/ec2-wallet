@@ -42,13 +42,13 @@ function Wallet() {
   ])
 
   return (
-    <div className="grid grid-cols-[1fr_auto] grid-rows-[auto_1fr] aspect-[2] p-3 bg-gradient-to-br from-primary-default to-primary-hover rounded-xl">
-      <h3 className="text-xl">
+    <div className="grid grid-cols-[1fr_auto] grid-rows-[auto_1fr] aspect-[2] p-3 md:p-3.5 bg-gradient-to-br from-primary-default to-primary-hover rounded-xl">
+      <h3 className="text-xl md:text-2xl landscape:text-xl">
         Balance
       </h3>
       <NavLink to="/recharge-wallet">
-        <button className="flex items-center gap-x-1">
-          <small className="text-foreground-primary/80">
+        <button className="flex items-center gap-x-1 md:gap-x-1.5 landscape:gap-x-1">
+          <small className="text-foreground-primary/80 md:text-base landscape:text-sm">
             Recharge
           </small>
           <div className="size-6 p-1 bg-foreground-primary text-foreground-primary-inverted rounded-full">
