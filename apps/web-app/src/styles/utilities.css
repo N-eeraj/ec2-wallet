@@ -1,7 +1,10 @@
 @reference "./main.css";
 
 @layer utilities {
-  .max-screen-view {
+  .max-screen-view-xl {
     @apply w-full max-w-xl mx-auto;
+  }
+  .max-screen-view-4xl {
+    @apply w-full max-w-4xl mx-auto;
   }
 }

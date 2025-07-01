@@ -6,7 +6,7 @@ import PinAnimation from "@features/pin/components/PinAnimation"
 
 function AlertScreen() {
   return (
-    <section className="flex flex-col items-center gap-y-10 landscape:gap-y-8 max-screen-view md:mt-3 py-12">
+    <section className="flex flex-col items-center gap-y-10 landscape:gap-y-8 max-screen-view-xl md:mt-3 py-12">
       <PinAnimation />
       <span className="text-foreground-secondary text-xl md:text-2xl">
         Setup PIN to start using&nbsp;
