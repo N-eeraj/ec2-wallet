@@ -1,9 +1,6 @@
+import Error from "@features/transactions/components/RecentContacts/Error"
 import useRecentContacts from "@features/transactions/hooks/useRecentContacts"
 import Contact from "@components/Contact"
-import Button from "@components/Button"
-import {
-  CircleX,
-} from "lucide-react"
 
 function RecentContacts() {
   const {
@@ -20,35 +17,20 @@ function RecentContacts() {
       </h3>
 
       {isError ? (
-          <div className="flex flex-col gap-y-2.5">
-            <span className="flex items-center gap-x-1.5 px-3 py-2.5 bg-background-error text-foreground-error text-sm">
-              <CircleX />
-              Failed to fetch recent contacts!
-            </span>
-            <Button
-              className="!bg-foreground-primary text-primary-default"
-              onClick={() => refetch()}>
-              Try Again
-            </Button>
-          </div>
+        <Error onRetry={() => refetch()} />
         ): (
-          <ul>
-            {isFetching ? (
-                <>
-                  {data?.map(() => (
-                    <li>
-                      Loading...
-                    </li>
-                  ))}
-                </>
-              ): (
-                data?.map((contact) => (
-                  <li key={contact.id}>
-                    <Contact {...contact} />
-                  </li>
-                ))
-              )
-            }
+          <ul className="grid grid-cols-4 md:grid-cols-8 landscape:grid-cols-4">
+            {data?.map((contact, index) => (
+              <li key={isFetching ? index : contact.id}>
+                {isFetching ? (
+                  <div>
+                    Loading
+                  </div>
+                ): (
+                  <Contact {...contact} />
+                )}
+              </li>
+            ))}
           </ul>
         )
       }

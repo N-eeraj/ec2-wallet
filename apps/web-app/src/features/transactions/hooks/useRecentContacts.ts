@@ -1,6 +1,9 @@
 import {
   useQuery,
 } from "@tanstack/react-query"
+import {
+  RECENT_CONTACTS_LIMIT,
+} from "@features/transactions/constants"
 import request from "@lib/axios"
 
 export interface Contact {
@@ -16,6 +19,8 @@ async function fetchRecentContacts() {
   return data
 }
 
+const placeholderData = Array.from({ length: RECENT_CONTACTS_LIMIT + 1 })  as unknown as Array<Contact>
+
 export default function useRecentContacts() {
   const {
     data,
@@ -27,7 +32,7 @@ export default function useRecentContacts() {
       "transactions",
       "recent-users",
     ],
-    placeholderData: Array.from({ length: 7 })  as unknown as Array<Contact>,
+    placeholderData,
     queryFn: fetchRecentContacts,
   })
 
