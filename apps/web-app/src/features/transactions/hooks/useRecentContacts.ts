@@ -15,11 +15,11 @@ export interface Contact {
 async function fetchRecentContacts() {
   const {
     data,
-  } = await request.get("/get-data")
+  } = await request.get(`/get-data?limit=${RECENT_CONTACTS_LIMIT}`)
   return data
 }
 
-const placeholderData = Array.from({ length: RECENT_CONTACTS_LIMIT + 1 })  as unknown as Array<Contact>
+const placeholderData = Array.from({ length: RECENT_CONTACTS_LIMIT + 1 }) as Array<null>
 
 export default function useRecentContacts() {
   const {
@@ -27,7 +27,7 @@ export default function useRecentContacts() {
     isFetching,
     isError,
     refetch,
-  } = useQuery<Array<Contact>>({
+  } = useQuery<Array<Contact> | Array<null>>({
     queryKey: [
       "transactions",
       "recent-users",

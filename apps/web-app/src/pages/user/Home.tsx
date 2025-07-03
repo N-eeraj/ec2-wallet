@@ -10,7 +10,7 @@ function Home() {
   if (!isPinSet) return <AlertScreen />
 
   return (
-    <section className="grid grid-rows-[auto_auto_auto] md:grid-rows-[auto_auto] md:grid-cols-[360px_1fr] landscape:grid-cols-[320px_min(50%,360px)] landscape:justify-between gap-4 md:gap-8 max-screen-view-4xl">
+    <section className="grid grid-rows-[auto_auto_auto] md:grid-rows-[auto_1fr] md:grid-cols-[360px_1fr] landscape:grid-cols-[320px_min(50%,360px)] landscape:justify-between gap-4 md:gap-8 max-screen-view-4xl">
       <Wallet />
 
       <section className="landscape:order-1">
