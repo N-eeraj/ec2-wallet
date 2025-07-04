@@ -23,7 +23,7 @@ function Wallet() {
 
   return (
     <>
-      <div className="grid grid-cols-[1fr_auto] grid-rows-[auto_1fr] aspect-[2] p-3 md:p-3.5 bg-gradient-to-br from-primary-default to-primary-hover rounded-xl">
+      <div className="grid grid-cols-[1fr_auto] grid-rows-[auto_1fr] max-w-96 aspect-[2] p-3 md:p-3.5 bg-gradient-to-br from-primary-default to-primary-hover rounded-xl">
         <h3 className="text-xl md:text-2xl landscape:text-xl">
           Balance
         </h3>
