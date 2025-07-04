@@ -48,7 +48,7 @@ function Wallet() {
               </Button>
             ): (
               <>
-                <strong className="text-3xl leading-tight truncate">
+                <strong className="text-3xl leading-none truncate">
                   {formattedBalance}
                 </strong>
                 <button

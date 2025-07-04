@@ -7,7 +7,7 @@ import {
 import request from "@lib/axios"
 
 export interface Contact {
-  id: string
+  id: string | number
   name: string
   phone: string
 }

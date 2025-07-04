@@ -18,7 +18,7 @@ function RecentContacts() {
         Recent Contacts
       </h3>
 
-      <ul className="grid grid-cols-4 md:grid-cols-2 landscape:grid-cols-1 gap-4 md:gap-x-8 md:gap-y-6">
+      <ul className="grid grid-cols-3 md:grid-cols-2 landscape:grid-cols-1 gap-4 md:gap-x-8 md:gap-y-4 landscape:gap-y-1">
         {data?.map((contact, index) => (
           <li key={contact?.id ?? index}>
             <Contact
