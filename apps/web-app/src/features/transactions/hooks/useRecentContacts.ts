@@ -15,11 +15,11 @@ export interface Contact {
 async function fetchRecentContacts() {
   const {
     data,
-  } = await request.get(`/get-data?limit=${RECENT_CONTACTS_LIMIT}`)
-  return data
+  } = await request.get(`/transactions/recent-users?limit=${RECENT_CONTACTS_LIMIT}`)
+  return data.data
 }
 
-const placeholderData = Array.from({ length: RECENT_CONTACTS_LIMIT + 1 }) as Array<null>
+const placeholderData = Array.from({ length: RECENT_CONTACTS_LIMIT }) as Array<null>
 
 export default function useRecentContacts() {
   const {
