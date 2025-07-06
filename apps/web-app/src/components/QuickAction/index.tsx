@@ -12,10 +12,10 @@ interface Props {
 function QuickActionItem({ label, icon: Icon, action }: Props) {
   return (
     <button
-      className="group flex flex-col items-center gap-y-2 size-full p-2 hover:bg-primary-default/10 rounded-sm duration-300"
+      className="group flex flex-col items-center gap-y-2 size-full p-2 hover:bg-background-secondary/50 rounded-sm duration-300"
       onClick={action}>
-      <Icon className="text-primary-default fill-background-secondary group-hover:fill-primary-default/30 duration-300" />
-      <small className="text-foreground-secondary/75">
+      <Icon className="group-hover:text-primary-hover fill-background-secondary group-hover:fill-primary-default/30 group-hover:scale-110 duration-300" />
+      <small className="text-foreground-secondary/75 md:text-base landscape:text-xs">
         {label}
       </small>
     </button>

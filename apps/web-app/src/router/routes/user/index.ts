@@ -1,5 +1,7 @@
 import User from "@layouts/User"
 
+import transactionRoutes from "@router/routes/user/transaction"
+
 import Home from "@pages/user/Home"
 import Profile from "@pages/user/Profile"
 import Settings from "@pages/user/Settings"
@@ -23,7 +25,8 @@ const userRoutes = {
     {
       path : "setup-pin",
       Component: SetupPin,
-    }
+    },
+    transactionRoutes,
   ],
 }
 
