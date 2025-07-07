@@ -1,6 +1,6 @@
-import History from "@pages/user/transaction/History"
-import NewTransaction from "@pages/user/transaction/New"
-import User from "@pages/user/transaction/User"
+import History from "@pages/user/transactions/History"
+import NewTransaction from "@pages/user/transactions/New"
+import User from "@pages/user/transactions/User"
 
 const transactionRoutes = {
   path: "transactions",

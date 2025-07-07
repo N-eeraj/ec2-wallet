@@ -5,6 +5,7 @@ import {
   BanknoteArrowUp,
   Scan,
   Zap,
+  ReceiptText,
   QrCode,
   Logs,
   Handshake,
@@ -31,12 +32,17 @@ export default function useQuickActions() {
     {
       label: "Recharge Wallet",
       icon: Zap,
-      action: () => {},
+      action: () => navigate("/wallet/recharge"),
+    },
+    {
+      label: "Recharge History",
+      icon: ReceiptText,
+      action: () => navigate("/wallet"),
     },
     {
       label: "Show QR Code",
       icon: QrCode,
-      action: () => {},
+      action: () => navigate("/qr-code"),
     },
     {
       label: "All Transactions",
@@ -44,7 +50,7 @@ export default function useQuickActions() {
       action: () => navigate("/transactions"),
     },
     {
-      label: "Refer",
+      label: "Refer Friend",
       icon: Handshake,
       action: () => share(REFERRAL_DATA),
     },

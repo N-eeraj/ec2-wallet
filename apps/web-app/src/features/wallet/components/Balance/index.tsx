@@ -27,7 +27,7 @@ function Wallet() {
         <h3 className="text-xl md:text-2xl landscape:text-xl">
           Balance
         </h3>
-        <NavLink to="/recharge-wallet">
+        <NavLink to="/wallet/recharge">
           <button className="flex items-center gap-x-1 md:gap-x-1.5 landscape:gap-x-1">
             <small className="text-foreground-primary/80 md:text-base landscape:text-sm">
               Recharge
