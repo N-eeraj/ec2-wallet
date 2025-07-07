@@ -1,46 +1,11 @@
 import QuickAction from "@components/QuickAction"
-import {
-  BanknoteArrowUp,
-  Scan,
-  Zap,
-  QrCode,
-  Logs,
-  Handshake,
-} from "lucide-react"
+import useQuickActions from "@hooks/useQuickActions"
+
 
 function QuickActionList() {
-  const QUICK_ACTIONS = [
-    {
-      label: "Send Money",
-      icon: BanknoteArrowUp,
-      action: () => {},
-    },
-    {
-      label: "Scan QR Code",
-      icon: Scan,
-      action: () => {},
-    },
-    {
-      label: "Recharge Wallet",
-      icon: Zap,
-      action: () => {},
-    },
-    {
-      label: "Show QR Code",
-      icon: QrCode,
-      action: () => {},
-    },
-    {
-      label: "All Transactions",
-      icon: Logs,
-      action: () => {},
-    },
-    {
-      label: "Refer",
-      icon: Handshake,
-      action: () => {},
-    },
-  ] as const
+  const {
+    actions
+  } = useQuickActions()
 
   return (
     <section className="landscape:order-1 space-y-2 md:space-y-1.5">
@@ -48,7 +13,7 @@ function QuickActionList() {
         Quick Actions
       </h3>
       <ul className="grid grid-cols-4 gap-3 md:gap-y-2">
-        {QUICK_ACTIONS.map((action, index) => (
+        {actions.map((action, index) => (
           <li key={index}>
             <QuickAction {...action} />
           </li>

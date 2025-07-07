@@ -1,9 +1,9 @@
 import History from "@pages/user/transaction/History"
-import NewTransaction from "@pages/user/transaction/new"
+import NewTransaction from "@pages/user/transaction/New"
 import User from "@pages/user/transaction/User"
 
 const transactionRoutes = {
-  path: "transaction",
+  path: "transactions",
   children: [
     {
       index: true,

@@ -15,7 +15,7 @@ function Contact({ id, name, phone, loading }: Props) {
 
   return (
     <NavLink
-      to={`/user/${id}`}
+      to={`/transactions/user/${id}`}
       className={clsx(
         "group grid md:grid-cols-[auto_1fr] justify-items-center md:justify-items-start md:items-center md:gap-x-3 gap-y-2 md:gap-y-1 landscape:gap-y-0.5 md:px-3 md:py-2 rounded-md",
         loading ? "pointer-events-none cursor-wait" : "hover:bg-primary-default/20 duration-300",
