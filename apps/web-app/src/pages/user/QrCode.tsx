@@ -35,6 +35,7 @@ function QrCode() {
         marginSize={1} />
 
       <Input
+        type="number"
         value={amount}
         placeholder="Enter Amount"
         containerProps={{

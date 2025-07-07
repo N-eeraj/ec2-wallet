@@ -1,7 +1,6 @@
 import QuickAction from "@components/QuickAction"
 import useQuickActions from "@hooks/useQuickActions"
 
-
 function QuickActionList() {
   const {
     actions

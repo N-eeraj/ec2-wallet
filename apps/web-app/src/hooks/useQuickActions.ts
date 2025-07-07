@@ -27,7 +27,7 @@ export default function useQuickActions() {
     {
       label: "Scan QR Code",
       icon: Scan,
-      action: () => {},
+      action: () => navigate("/transactions/scan"),
     },
     {
       label: "Recharge Wallet",
@@ -54,7 +54,7 @@ export default function useQuickActions() {
       icon: Handshake,
       action: () => share(REFERRAL_DATA),
     },
-  ] as const
+  ]
 
   return {
     actions,

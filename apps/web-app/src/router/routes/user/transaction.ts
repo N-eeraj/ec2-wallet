@@ -1,6 +1,7 @@
 import History from "@pages/user/transactions/History"
 import NewTransaction from "@pages/user/transactions/New"
 import User from "@pages/user/transactions/User"
+import Scanner from "@pages/user/transactions/Scanner"
 
 const transactionRoutes = {
   path: "transactions",
@@ -16,6 +17,10 @@ const transactionRoutes = {
     {
       path: "user/:userId",
       Component: User,
+    },
+    {
+      path: "scan",
+      Component: Scanner,
     },
   ],
 }

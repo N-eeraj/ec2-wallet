@@ -1,6 +1,16 @@
+import {
+  useParams,
+  useSearchParams,
+} from "react-router"
+
 function User() {
+  const params = useParams()
+  const [searchParams] = useSearchParams()
+
   return (
-    <div>User</div>
+    <section>
+      Pay {params.userId} {searchParams.get("amount")}
+    </section>
   )
 }
 

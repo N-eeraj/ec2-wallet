@@ -18,10 +18,10 @@ export function numericInput(event: FormEvent<HTMLInputElement>, { maxLength, fo
   targetElement.value = formatter?.(value) ?? value
 }
 
-export const currencyInput = (event: FormEvent<HTMLInputElement>) => {
-  numericInput(event, {
-    formatter: Number,
-  })
-}
+export const currencyInput = (event: FormEvent<HTMLInputElement>) => numericInput(event, {
+  formatter: Number,
+})
 
-export const onPhoneInput = (event: FormEvent<HTMLInputElement>) => numericInput(event, { maxLength: MAX_PHONE_LENGTH })
+export const onPhoneInput = (event: FormEvent<HTMLInputElement>) => numericInput(event, {
+  maxLength: MAX_PHONE_LENGTH,
+})
