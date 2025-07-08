@@ -22,7 +22,7 @@ export default function useQuickActions() {
     {
       label: "Send Money",
       icon: BanknoteArrowUp,
-      action: () => navigate("/transactions/new"),
+      action: () => navigate("/users"),
     },
     {
       label: "Scan QR Code",

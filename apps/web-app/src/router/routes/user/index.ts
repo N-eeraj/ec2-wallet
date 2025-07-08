@@ -5,6 +5,7 @@ import walletRoutes from "@router/routes/user/wallet"
 
 import Home from "@pages/user/Home"
 import Profile from "@pages/user/Profile"
+import AllUsers from "@pages/user/AllUsers"
 import Settings from "@pages/user/Settings"
 import SetupPin from "@pages/user/SetupPin"
 import QrCode from "@pages/user/QrCode"
@@ -19,6 +20,10 @@ const userRoutes = {
     {
       path: "profile",
       Component: Profile,
+    },
+    {
+      path: "users",
+      Component: AllUsers,
     },
     {
       path: "settings",

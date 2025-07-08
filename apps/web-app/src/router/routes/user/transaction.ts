@@ -1,5 +1,4 @@
 import History from "@pages/user/transactions/History"
-import NewTransaction from "@pages/user/transactions/New"
 import User from "@pages/user/transactions/User"
 import Scanner from "@pages/user/transactions/Scanner"
 
@@ -9,10 +8,6 @@ const transactionRoutes = {
     {
       index: true,
       Component: History,
-    },
-    {
-      path: "new",
-      Component: NewTransaction,
     },
     {
       path: "user/:userId",
