@@ -1,5 +1,5 @@
 import {
-  useCallback,
+  useEffect,
 } from "react"
 import {
   useQuery,
@@ -12,6 +12,13 @@ import {
   getErrorStatus,
 } from "@utils/request"
 
+async function fetchUser() {
+  const {
+    data,
+  } = await request.get("/user")
+  return data
+}
+
 export default function useUserLayout() {
   const shouldUseLayout = useLayoutGuard({
     loginState: true,
@@ -21,23 +28,9 @@ export default function useUserLayout() {
   const setUser = userStore(({ setUser }) => setUser)
   const clearUser = userStore(({ clearUser }) => clearUser)
 
-  const fetchUser = useCallback(async () => {
-    try {
-      const {
-        data,
-      } = await request.get("/user")
-      setUser(data.data)
-      return data
-    } catch (error) {
-      const status = getErrorStatus(error)
-      if (status === 401)  {
-        clearUser()
-      }
-    }
-  }, [])
-
   const {
     data,
+    error,
     isError,
     isFetching,
   } = useQuery({
@@ -47,6 +40,17 @@ export default function useUserLayout() {
     queryFn: fetchUser,
     enabled: shouldUseLayout,
   })
+
+  useEffect(() => {
+    if (data) {
+      setUser(data.data)
+    } else if (getErrorStatus(error) === 401) {
+      clearUser()
+    }
+  }, [
+    data,
+    error,
+  ])
 
   return {
     data,
