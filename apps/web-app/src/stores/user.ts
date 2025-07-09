@@ -2,13 +2,9 @@ import {
   create,
 } from "zustand"
 import Cookies from "js-cookie"
-
-export interface User {
-  id: string
-  name: string
-  phone: string
-  isPinSet: boolean
-}
+import type {
+  User,
+} from "@dTypes/user"
 
 interface UserStore {
   user: User | null

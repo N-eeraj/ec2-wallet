@@ -1,40 +1,14 @@
-import {
-  useState,
-} from "react"
-import {
-  useQuery,
-} from "@tanstack/react-query"
+import Contact from "@components/Contact"
 import Input from "@components/Input"
-
-import request from "@lib/axios"
-import {
-  useDebounce,
-} from "@uidotdev/usehooks"
-import type {
-  QueryFunctionParams,
-} from "@dTypes/query"
-
-async function fetchUsers({ queryKey: [_, query] }: QueryFunctionParams) {
-  const {
-    data,
-  } = await request.get(`/get-all-users?query=${query}`)
-  return data.data
-}
+import useAllUsers from "@hooks/useAllUsers"
 
 function NewTransaction() {
-  const [searchQuery, setSearchQuery] = useState("")
-  const debouncedSearch = useDebounce(searchQuery, 400)
-
   const {
-    data: users,
-    isLoading,
-  } = useQuery({
-    queryKey: [
-      "users",
-      debouncedSearch,
-    ],
-    queryFn: fetchUsers,
-  })
+    users,
+    isFetching,
+    searchQuery,
+    setSearchQuery,
+  } = useAllUsers()
 
   return (
     <section className="flex flex-col gap-y-2 max-screen-view-md">
@@ -44,14 +18,13 @@ function NewTransaction() {
         className="bg-background-secondary border border-foreground-faded/50 placeholder:font-light"
         onChange={({ target }) => setSearchQuery(target.value)} />
 
-      <ul>
-        {users?.map((user) => (
+      <ul className="space-y-2">
+        {users.map((user) => (
           <li key={user.id}>
-            {JSON.stringify(user)}
+            <Contact {...user} />
           </li>
         ))}
       </ul>
-      {`${isLoading}`}
     </section>
   )
 }

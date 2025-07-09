@@ -34,7 +34,7 @@ export default function useBalance() {
     refetch,
     isFetching,
     error,
-  } = useQuery({
+  } = useQuery<number | null>({
     queryKey: [
       "wallet-balance"
     ],

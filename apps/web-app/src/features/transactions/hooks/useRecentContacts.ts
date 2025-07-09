@@ -5,12 +5,9 @@ import {
   RECENT_CONTACTS_LIMIT,
 } from "@features/transactions/constants"
 import request from "@lib/axios"
-
-export interface Contact {
-  id: string | number
-  name: string
-  phone: string
-}
+import type {
+  Contact,
+} from "@dTypes/user"
 
 async function fetchRecentContacts() {
   const {

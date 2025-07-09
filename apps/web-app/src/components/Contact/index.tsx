@@ -1,9 +1,9 @@
 import {
   NavLink,
 } from "react-router"
-import {
-  type Contact as ContactType,
-} from "@features/transactions/hooks/useRecentContacts"
+import type {
+  Contact as ContactType,
+} from "@dTypes/user"
 import clsx from "clsx"
 
 interface Props extends Partial<ContactType> {
