@@ -15,8 +15,8 @@ import {
   getErrorMessage,
   getFormErrors,
 } from "@utils/request"
-import {
-  type FormErrorPath,
+import type {
+  FormErrorPath,
 } from "@dTypes/form"
 
 interface Params<FormShape extends ZodRawShape> {
