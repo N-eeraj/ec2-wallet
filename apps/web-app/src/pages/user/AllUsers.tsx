@@ -20,7 +20,9 @@ function NewTransaction() {
 
       <ul className="space-y-2">
         {users.map((user) => (
-          <li key={user.id}>
+          <li
+            key={user.id}
+            className="@container/contact">
             <Contact {...user} />
           </li>
         ))}
