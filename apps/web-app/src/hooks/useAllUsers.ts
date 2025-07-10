@@ -2,7 +2,7 @@ import {
   useState,
 } from "react"
 import {
-  useQuery,
+  useInfiniteQuery,
 } from "@tanstack/react-query"
 
 import request from "@lib/axios"
@@ -13,10 +13,10 @@ import type {
   Contact,
 } from "@dTypes/user"
 
-async function fetchUsers(query = "") {
+async function fetchUsers(query = "", page = 1) {
   const {
     data,
-  } = await request.get(`/get-all-users?query=${query}`)
+  } = await request.get(`/get-all-users?query=${query}&page=${page}`)
   return data.data
 }
 
@@ -27,18 +27,22 @@ export default function useAllUsers() {
   const {
     data,
     isFetching,
-  } = useQuery<Array<Contact>>({
+    fetchNextPage,
+  } = useInfiniteQuery<Array<Contact>>({
     queryKey: [
       "users-list",
       debouncedSearch,
     ],
-    queryFn: ({ queryKey: [_, query] }) => fetchUsers(query as typeof debouncedSearch),
+    queryFn: ({ queryKey: [_, query], pageParam }) => fetchUsers(query as typeof debouncedSearch, pageParam as number),
+    initialPageParam: 1,
+    getNextPageParam: (_lastPage, allPages) => allPages.length + 1,
   })
 
   return {
-    users: data ?? [],
+    users: data?.pages.flat() ?? [],
     isFetching,
     searchQuery,
     setSearchQuery,
+    fetchNextPage,
   }
 }

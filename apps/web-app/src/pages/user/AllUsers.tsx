@@ -8,6 +8,7 @@ function NewTransaction() {
     isFetching,
     searchQuery,
     setSearchQuery,
+    fetchNextPage,
   } = useAllUsers()
 
   return (
@@ -27,6 +28,9 @@ function NewTransaction() {
           </li>
         ))}
       </ul>
+      <button onClick={() => fetchNextPage()}>
+        Load More
+      </button>
     </section>
   )
 }
