@@ -1,4 +1,7 @@
 import {
+  memo,
+} from "react"
+import {
   NavLink,
 } from "react-router"
 import type {
@@ -52,4 +55,4 @@ function Contact({ id, name, phone, loading }: Props) {
   )
 }
 
-export default Contact
+export default memo(Contact)

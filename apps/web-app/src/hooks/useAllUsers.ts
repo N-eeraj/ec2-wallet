@@ -5,10 +5,10 @@ import {
   useInfiniteQuery,
 } from "@tanstack/react-query"
 
-import request from "@lib/axios"
 import {
   useDebounce,
 } from "@uidotdev/usehooks"
+import request from "@lib/axios"
 import type {
   Contact,
 } from "@dTypes/user"
@@ -20,6 +20,8 @@ async function fetchUsers(query = "", page = 1) {
   return data.data
 }
 
+const fetchingState = Array.from({ length: 6 })
+
 export default function useAllUsers() {
   const [searchQuery, setSearchQuery] = useState("")
   const debouncedSearch = useDebounce(searchQuery, 400)
@@ -27,6 +29,7 @@ export default function useAllUsers() {
   const {
     data,
     isFetching,
+    hasNextPage,
     fetchNextPage,
   } = useInfiniteQuery<Array<Contact>>({
     queryKey: [
@@ -35,14 +38,21 @@ export default function useAllUsers() {
     ],
     queryFn: ({ queryKey: [_, query], pageParam }) => fetchUsers(query as typeof debouncedSearch, pageParam as number),
     initialPageParam: 1,
-    getNextPageParam: (_lastPage, allPages) => allPages.length + 1,
+    getNextPageParam: (lastPage, allPages) => {
+      if (!lastPage.length || lastPage.length < allPages[0].length) {
+        return null
+      }
+      return allPages.length + 1
+    },
   })
 
   return {
     users: data?.pages.flat() ?? [],
     isFetching,
+    fetchingState: isFetching ? fetchingState : [],
+    hasNextPage,
+    fetchNextPage,
     searchQuery,
     setSearchQuery,
-    fetchNextPage,
   }
 }

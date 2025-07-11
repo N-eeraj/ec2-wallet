@@ -6,9 +6,11 @@ function NewTransaction() {
   const {
     users,
     isFetching,
+    fetchingState,
+    hasNextPage,
+    fetchNextPage,
     searchQuery,
     setSearchQuery,
-    fetchNextPage,
   } = useAllUsers()
 
   return (
@@ -27,10 +29,22 @@ function NewTransaction() {
             <Contact {...user} />
           </li>
         ))}
+
+        {fetchingState.map((_, index) => (
+          <li
+            key={index}
+            className="@container/contact">
+            <Contact loading />
+          </li>
+        ))}
       </ul>
-      <button onClick={() => fetchNextPage()}>
-        Load More
-      </button>
+
+      {(!isFetching && hasNextPage) &&
+        <>
+          <button onClick={() => fetchNextPage()}>
+            Load More
+          </button>
+        </>}
     </section>
   )
 }
