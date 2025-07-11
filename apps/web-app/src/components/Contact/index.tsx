@@ -13,8 +13,17 @@ interface Props extends Partial<ContactType> {
   loading?: boolean
 }
 
+function getHue(phone: string) {
+  let hash = 0
+  for (let i = 0; i < phone.length; i++) {
+    hash = (hash << 5) - hash + phone.charCodeAt(i)
+    hash |= 0
+  }
+  return Math.abs(hash) % 360
+}
+
 function Contact({ id, name, phone, loading }: Props) {
-  const hue = loading ? 0 : Math.floor(Math.random() * 360)
+  const hue = (loading || !phone) ? 0 : getHue(phone)
 
   return (
     <NavLink

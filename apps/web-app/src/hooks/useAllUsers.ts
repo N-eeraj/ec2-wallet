@@ -8,6 +8,7 @@ import {
 import {
   useDebounce,
 } from "@uidotdev/usehooks"
+import useInfiniteScroll from "react-infinite-scroll-hook"
 import request from "@lib/axios"
 import type {
   Contact,
@@ -46,6 +47,12 @@ export default function useAllUsers() {
     },
   })
 
+  const [infiniteRef] = useInfiniteScroll({
+    loading: isFetching,
+    hasNextPage,
+    onLoadMore: fetchNextPage,
+  })
+
   return {
     users: data?.pages.flat() ?? [],
     isFetching,
@@ -54,5 +61,6 @@ export default function useAllUsers() {
     fetchNextPage,
     searchQuery,
     setSearchQuery,
+    infiniteRef,
   }
 }

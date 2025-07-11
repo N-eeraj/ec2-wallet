@@ -5,12 +5,10 @@ import useAllUsers from "@hooks/useAllUsers"
 function NewTransaction() {
   const {
     users,
-    isFetching,
     fetchingState,
-    hasNextPage,
-    fetchNextPage,
     searchQuery,
     setSearchQuery,
+    infiniteRef,
   } = useAllUsers()
 
   return (
@@ -39,12 +37,7 @@ function NewTransaction() {
         ))}
       </ul>
 
-      {(!isFetching && hasNextPage) &&
-        <>
-          <button onClick={() => fetchNextPage()}>
-            Load More
-          </button>
-        </>}
+      <div ref={infiniteRef} />
     </section>
   )
 }
