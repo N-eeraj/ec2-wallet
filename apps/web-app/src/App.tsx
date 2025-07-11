@@ -1,5 +1,7 @@
 import AppRouter from "@router"
-import AppQueryClient from "@/QueryClient"
+import {
+  Provider as QueryClientProvider,
+} from "@/QueryClient"
 
 import "@styles/themes.css"
 import "@styles/main.css"
@@ -7,9 +9,9 @@ import "@styles/utilities.css"
 
 function App() {
   return (
-    <AppQueryClient>
+    <QueryClientProvider>
       <AppRouter />
-    </AppQueryClient>
+    </QueryClientProvider>
   )
 }
 

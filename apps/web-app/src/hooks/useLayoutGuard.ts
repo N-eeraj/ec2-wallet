@@ -24,6 +24,9 @@ export default function useLayoutGuard({ loginState, redirectTo }: GuardOptions)
     }
   }, [
     isUserLoggedIn,
+    loginState,
+    navigate,
+    redirectTo,
   ])
 
   return isUserLoggedIn === loginState

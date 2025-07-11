@@ -64,7 +64,11 @@ export default function useSetPin() {
     } else {
       stopLoading()
     }
-  }, [isPending])
+  }, [
+    isPending,
+    startLoading,
+    stopLoading,
+  ])
 
   const handlePinConfirmation = (pin: string) => {
     if (initialPin !== pin) {

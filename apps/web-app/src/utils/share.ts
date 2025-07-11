@@ -23,5 +23,7 @@ export default async function share(data: ShareData, fallbackToastText = "Copied
       document.body.removeChild(dummy)
       toast.success(fallbackToastText)
     }
-  } catch {} // prevents any unwanted console errors
+  } catch {
+     // prevents any unwanted console errors
+  }
 }

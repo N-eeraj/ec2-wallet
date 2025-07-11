@@ -46,6 +46,9 @@ function Wallet() {
               <Button
                 loading={isFetching}
                 className="!bg-foreground-primary text-foreground-primary-inverted"
+                whileHover={{
+                  scale: 0.95,
+                }}
                 onClick={() => setShowPin(true)}>
                 Check Balance
               </Button>

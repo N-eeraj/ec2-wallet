@@ -55,20 +55,32 @@ export default function useBalance() {
     }
   }, [
     pin,
+    refetch,
   ])
 
   useEffect(() => {
     if (!isFetching) {
       setPin("")
-      if (data) {
-        animate(balance, data, { duration: 0.4 })
-      } else if (error) {
-        toast.error(getErrorMessage(error))
-      }
+    }
+  }, [
+    isFetching,
+    balance,
+  ])
+
+  useEffect(() => {
+    if (data) {
+      animate(balance, data, { duration: 0.4 })
     }
   }, [
     data,
-    isFetching,
+    balance,
+  ])
+
+  useEffect(() => {
+    if (error) {
+      toast.error(getErrorMessage(error))
+    }
+  }, [
     error,
   ])
 

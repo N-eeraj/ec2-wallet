@@ -39,7 +39,10 @@ function Keypad({ onClick, onDelete, onSubmit }: Props) {
     document.addEventListener("keydown", handleKeypress)
 
     return () => document.removeEventListener("keydown", handleKeypress)
-  }, [])
+  }, [
+    onDelete,
+    onClick,
+  ])
 
   const handleClick = (key: Key) => {
     if (typeof key === "number") {

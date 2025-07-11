@@ -1,11 +1,13 @@
 import {
-  type ForwardRefExoticComponent,
   type MouseEventHandler,
 } from "react"
+import {
+  type LucideIcon,
+} from "lucide-react"
 
 interface Props {
   label: string
-  icon: ForwardRefExoticComponent<any>
+  icon: LucideIcon
   action: MouseEventHandler
 }
 

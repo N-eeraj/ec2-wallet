@@ -40,7 +40,7 @@ export default function useMenu() {
 
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const menuListRef = useClickAway(() => setIsMenuOpen(false))
-  const withCloseMenu = (fn: Function | undefined) => {
+  const withCloseMenu = (fn: () => unknown | undefined) => {
     setIsMenuOpen(false)
     fn?.()
   }
@@ -69,6 +69,8 @@ export default function useMenu() {
     }
   }, [
     logoutLoading,
+    startLoading,
+    stopLoading,
   ])
 
   const {

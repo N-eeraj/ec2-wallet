@@ -50,6 +50,8 @@ export default function useUserLayout() {
   }, [
     data,
     error,
+    clearUser,
+    setUser,
   ])
 
   return {
