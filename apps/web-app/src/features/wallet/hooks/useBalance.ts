@@ -1,11 +1,15 @@
 import {
   useState,
   useEffect,
-  useMemo,
 } from "react"
 import {
   useQuery,
 } from "@tanstack/react-query"
+import {
+  animate,
+  useMotionValue,
+  useTransform,
+} from "motion/react"
 
 import request from "@lib/axios"
 import {
@@ -28,9 +32,10 @@ async function fetchBalance(pin: string) {
 export default function useBalance() {
   const [showPin, setShowPin] = useState(false)
   const [pin, setPin] = useState("")
+  const balance = useMotionValue(0)
 
   const {
-    data: balance,
+    data,
     refetch,
     isFetching,
     error,
@@ -55,23 +60,22 @@ export default function useBalance() {
   useEffect(() => {
     if (!isFetching) {
       setPin("")
-      if (error) {
+      if (data) {
+        animate(balance, data, { duration: 0.4 })
+      } else if (error) {
         toast.error(getErrorMessage(error))
       }
     }
   }, [
+    data,
     isFetching,
     error,
   ])
 
-  const formattedBalance = useMemo(() => {
-    return currencyFormat(balance)
-  }, [
-    balance,
-  ])
+  const formattedBalance = useTransform(() => data ? currencyFormat(balance.get()) : null)
 
   return {
-    balance,
+    data,
     showPin,
     setShowPin,
     setPin,

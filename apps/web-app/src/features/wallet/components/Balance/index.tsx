@@ -1,6 +1,9 @@
 import {
   NavLink,
 } from "react-router"
+import {
+  motion,
+} from "motion/react"
 import EnterPin from "@features/pin/components/EnterPin"
 import useBalance from "@features/wallet/hooks/useBalance"
 
@@ -13,7 +16,7 @@ import clsx from "clsx"
 
 function Wallet() {
   const {
-    balance,
+    data,
     showPin,
     setShowPin,
     setPin,
@@ -39,7 +42,7 @@ function Wallet() {
         </NavLink>
 
         <div className="col-span-2 flex items-end gap-x-1.5">
-          {balance === null ? (
+          {data === null ? (
               <Button
                 loading={isFetching}
                 className="!bg-foreground-primary text-foreground-primary-inverted"
@@ -48,9 +51,9 @@ function Wallet() {
               </Button>
             ): (
               <>
-                <strong className="text-3xl leading-none truncate">
+                <motion.strong className="text-3xl leading-none truncate">
                   {formattedBalance}
-                </strong>
+                </motion.strong>
                 <button
                   disabled={isFetching}
                   className={clsx(
