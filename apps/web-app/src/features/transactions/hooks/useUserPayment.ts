@@ -36,7 +36,7 @@ export default function useUserPayment() {
   })
 
   return {
-    data,
+    user: data,
     isFetching,
     searchParams,
   }

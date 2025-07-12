@@ -1,15 +1,27 @@
+import ProfilePicture from "@components/ProfilePicture"
 import useUserPayment from "@features/transactions/hooks/useUserPayment"
 
 function UserPayment() {
   const {
-    data,
+    user,
     isFetching,
     searchParams,
   } = useUserPayment()
 
   return (
-    <section>
-      Pay {data?.name} {searchParams.get("amount")}
+    <section className="flex flex-col items-center gap-y-2">
+      <ProfilePicture
+        {...user}
+        loading={isFetching} />
+
+      <div>
+        Paying&nbsp;
+        <strong>
+          {user?.name}
+        </strong>
+      </div>
+
+      {searchParams.get("amount")}
     </section>
   )
 }

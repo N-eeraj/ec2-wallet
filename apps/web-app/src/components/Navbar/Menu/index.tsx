@@ -6,6 +6,7 @@ import {
 import {
   MenuItem,
 } from "@components/Navbar"
+import ProfilePicture from "@components/ProfilePicture"
 import useMenu from "@hooks/useMenu"
 
 function Menu() {
@@ -24,9 +25,14 @@ function Menu() {
       ref={menuListRef}
       className="relative flex gap-x-2 landscape:gap-x-4">
       <button
-        className="md:text-xl landscape:text-base font-bold duration-300"
+        className="flex items-center gap-x-2 md:gap-x-3 landscape:gap-x-2 duration-300"
         onClick={toggleMenu}>
-        {user?.name}
+        <ProfilePicture
+          {...user}
+          className="shrink-0 !size-8 !text-xl" />
+        <strong className="shrink-0 w-fit md:text-xl landscape:text-base">
+          {user?.name}
+        </strong>
       </button>
 
       <AnimatePresence>
