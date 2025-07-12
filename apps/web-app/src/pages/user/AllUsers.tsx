@@ -1,11 +1,11 @@
-import Contact from "@components/Contact"
 import Input from "@components/Input"
+import UsersList from "@/components/UsersList"
 import useAllUsers from "@hooks/useAllUsers"
 
 function NewTransaction() {
   const {
     users,
-    fetchingState,
+    isFetching,
     searchQuery,
     setSearchQuery,
     infiniteRef,
@@ -19,23 +19,9 @@ function NewTransaction() {
         className="bg-background-secondary border border-foreground-faded/50 placeholder:font-light"
         onChange={({ target }) => setSearchQuery(target.value)} />
 
-      <ul className="space-y-2">
-        {users.map((user) => (
-          <li
-            key={user.id}
-            className="@container/contact">
-            <Contact {...user} />
-          </li>
-        ))}
-
-        {fetchingState.map((_, index) => (
-          <li
-            key={index}
-            className="@container/contact">
-            <Contact loading />
-          </li>
-        ))}
-      </ul>
+      <UsersList
+        users={users}
+        loading={isFetching} />
 
       <div ref={infiniteRef} />
     </section>

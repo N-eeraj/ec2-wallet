@@ -19,7 +19,7 @@ function getHue(phone: string) {
     hash = (hash << 5) - hash + phone.charCodeAt(i)
     hash |= 0
   }
-  return Math.abs(hash) % 360
+  return Math.abs(hash) % 60 * 6
 }
 
 function Contact({ id, name, phone, loading }: Props) {

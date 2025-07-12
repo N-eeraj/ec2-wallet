@@ -10,18 +10,19 @@ import {
 } from "@uidotdev/usehooks"
 import useInfiniteScroll from "react-infinite-scroll-hook"
 import request from "@lib/axios"
+import {
+  USERS_LIST_FETCH_LIMIT,
+} from "@constants/users"
 import type {
   Contact,
 } from "@dTypes/user"
 
-async function fetchUsers(query = "", page = 1) {
+async function fetchUsers(query = "", offset = 0) {
   const {
     data,
-  } = await request.get(`/get-all-users?query=${query}&page=${page}`)
+  } = await request.get(`/get-all-users?query=${query}&offset=${offset}&limit=${USERS_LIST_FETCH_LIMIT}`)
   return data.data
 }
-
-const fetchingState = Array.from({ length: 6 })
 
 export default function useAllUsers() {
   const [searchQuery, setSearchQuery] = useState("")
@@ -38,12 +39,12 @@ export default function useAllUsers() {
       debouncedSearch,
     ],
     queryFn: ({ queryKey: [_, query], pageParam }) => fetchUsers(query as typeof debouncedSearch, pageParam as number),
-    initialPageParam: 1,
+    initialPageParam: 0,
     getNextPageParam: (lastPage, allPages) => {
-      if (!lastPage.length || lastPage.length < allPages[0].length) {
+      if (!lastPage.length || lastPage.length < USERS_LIST_FETCH_LIMIT) {
         return null
       }
-      return allPages.length + 1
+      return allPages.flat().length
     },
   })
 
@@ -56,7 +57,6 @@ export default function useAllUsers() {
   return {
     users: data?.pages.flat() ?? [],
     isFetching,
-    fetchingState: isFetching ? fetchingState : [],
     hasNextPage,
     fetchNextPage,
     searchQuery,
