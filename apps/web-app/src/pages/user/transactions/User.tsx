@@ -1,15 +1,9 @@
-import {
-  useParams,
-  useSearchParams,
-} from "react-router"
+import UserPayment from "@features/transactions/components/User/Payment"
 
 function User() {
-  const params = useParams()
-  const [searchParams] = useSearchParams()
-
   return (
     <section>
-      Pay {params.userId} {searchParams.get("amount")}
+      <UserPayment />
     </section>
   )
 }
