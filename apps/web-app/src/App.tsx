@@ -3,7 +3,7 @@ import {
   Provider as QueryClientProvider,
 } from "@/QueryClient"
 
-import "@styles/themes.css"
+import "@styles/palette.css"
 import "@styles/main.css"
 import "@styles/utilities.css"
 

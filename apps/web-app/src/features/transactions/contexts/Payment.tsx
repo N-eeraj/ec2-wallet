@@ -4,14 +4,17 @@ import {
   type PropsWithChildren,
 } from "react"
 
-export type PaymentView = "payment" | "history"
+export enum PaymentView {
+  PAYMENT = "payment",
+  HISTORY = "history",
+}
 
 interface ContextValues {
   view: PaymentView
   setView: (_view: PaymentView) => void
 }
 
-const INITIAL_VIEW: PaymentView = "payment"
+const INITIAL_VIEW: PaymentView = PaymentView.PAYMENT
 
 export const PaymentContext = createContext<ContextValues>({
   view: INITIAL_VIEW,

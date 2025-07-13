@@ -1,5 +1,6 @@
 import {
   use,
+  type MouseEventHandler,
 } from "react"
 import {
   useParams,
@@ -11,6 +12,7 @@ import {
 
 import {
   PaymentContext,
+  PaymentView,
 } from "@features/transactions/contexts/Payment"
 import request from "@lib/axios"
 import type {
@@ -28,10 +30,10 @@ export default function useUserPayment() {
   const params = useParams()
   const [searchParams] = useSearchParams()
 
-    const {
-      view,
-      setView,
-    } = use(PaymentContext)
+  const {
+    view,
+    setView,
+  } = use(PaymentContext)
 
   const userId = params.userId as User["id"]
 
@@ -46,15 +48,20 @@ export default function useUserPayment() {
     queryFn: ({ queryKey: [_, id] }) => fetchUser(id)
   })
 
-  const toggleView = () => {
-    setView(view === "history" ? "payment" : "history")
+  const toggleView: MouseEventHandler = (event) => {
+    event.stopPropagation()
+    setView(view === PaymentView.HISTORY ? PaymentView.PAYMENT : PaymentView.HISTORY)
+  }
+
+  const backToPaymentView = () => {
+    setView(PaymentView.PAYMENT)
   }
 
   return {
     user: data,
     isFetching,
-    searchParams,
     view,
     toggleView,
+    backToPaymentView,
   }
 }

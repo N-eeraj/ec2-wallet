@@ -5,10 +5,9 @@ import PaymentHistory from "@features/transactions/components/User/Payment/Histo
 
 function User() {
   return (
-    <section className="portrait:absolute portrait:top-0 portrait:left-0 flex portrait:flex-col gap-x-8 max-screen-view-4xl">
-      <BackAction />
-
+    <section className="portrait:absolute portrait:top-0 portrait:left-0 flex portrait:flex-col gap-x-8 max-screen-view-4xl h-full">
       <PaymentContextProvider>
+        <BackAction />
         <Payment />
         <PaymentHistory />
       </PaymentContextProvider>

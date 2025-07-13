@@ -32,6 +32,12 @@
   --color-primary-hover: var(--primary-hover);
 
   --font-ember: "Ember", sans-serif;
+
+  --spacing-navbar-xs: 48px;
+  --spacing-navbar-md: 76px;
+
+  --spacing-content-height-xs: calc(100svh - var(--spacing-navbar-xs));
+  --spacing-content-height-md: calc(100svh - var(--spacing-navbar-md));
 }
 
 html {
