@@ -4,14 +4,23 @@ import {
 import {
   Toaster,
 } from "sonner"
+import {
+  SkeletonTheme,
+} from "react-loading-skeleton"
 import Loader from "@components/Loader"
+
+import "react-loading-skeleton/dist/skeleton.css"
 
 function Root() {
   return (
     <>
-      <Outlet />
-      <Toaster richColors />
-      <Loader />
+      <SkeletonTheme
+        baseColor="var(--color-background-secondary)"
+        highlightColor="var(--color-background-primary)">
+        <Outlet />
+        <Toaster richColors />
+        <Loader />
+      </SkeletonTheme>
     </>
   )
 }

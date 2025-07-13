@@ -2,13 +2,14 @@ import {
   useNavigate,
 } from "react-router"
 import QrScanner from "react-qr-barcode-scanner"
+
+import {
+  SCANNER_DECORATION_BORDER_CLASSES,
+} from "@features/transactions/constants"
 import {
   X,
 } from "lucide-react"
 import clsx from "clsx"
-import {
-  SCANNER_DECORATION_BORDER_CLASSES,
-} from "@/features/transactions/constants"
 
 function Scanner() {
   const navigate = useNavigate()

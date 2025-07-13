@@ -11,7 +11,7 @@ import {
 } from "@utils/input"
 import {
   type User,
-} from "@/stores/user"
+} from "@dTypes/user"
 
 function QrCode({ id: userId, name }: User) {
   const [amount, setAmount] = useState("")

@@ -1,5 +1,5 @@
 import Input from "@components/Input"
-import UsersList from "@/components/UsersList"
+import UsersList from "@components/UsersList"
 import useAllUsers from "@hooks/useAllUsers"
 
 function NewTransaction() {
