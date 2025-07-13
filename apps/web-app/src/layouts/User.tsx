@@ -19,7 +19,7 @@ function Auth() {
   return (
     <>
       <Navbar />
-      <main className="p-4 md:px-8 md:py-6">
+      <main className="relative p-4 md:px-8 md:py-6">
         <Outlet />
       </main>
     </>

@@ -1,11 +1,17 @@
-import Navbar from "@features/transactions/components/User/Payment/Navbar"
-import UserPayment from "@features/transactions/components/User/Payment"
+import PaymentContextProvider from "@features/transactions/contexts/Payment"
+import BackAction from "@features/transactions/components/User/Payment/BackAction"
+import Payment from "@features/transactions/components/User/Payment"
+import PaymentHistory from "@features/transactions/components/User/Payment/History"
 
 function User() {
   return (
-    <section className="flex flex-col gap-y-4">
-      <Navbar />
-      <UserPayment />
+    <section className="portrait:absolute portrait:top-0 portrait:left-0 flex portrait:flex-col gap-x-8 max-screen-view-4xl">
+      <BackAction />
+
+      <PaymentContextProvider>
+        <Payment />
+        <PaymentHistory />
+      </PaymentContextProvider>
     </section>
   )
 }

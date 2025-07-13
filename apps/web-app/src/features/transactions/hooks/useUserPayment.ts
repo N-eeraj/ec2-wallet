@@ -1,4 +1,7 @@
 import {
+  use,
+} from "react"
+import {
   useParams,
   useSearchParams,
 } from "react-router"
@@ -6,6 +9,9 @@ import {
   useQuery,
 } from "@tanstack/react-query"
 
+import {
+  PaymentContext,
+} from "@features/transactions/contexts/Payment"
 import request from "@lib/axios"
 import type {
   User,
@@ -22,6 +28,11 @@ export default function useUserPayment() {
   const params = useParams()
   const [searchParams] = useSearchParams()
 
+    const {
+      view,
+      setView,
+    } = use(PaymentContext)
+
   const userId = params.userId as User["id"]
 
   const {
@@ -35,9 +46,15 @@ export default function useUserPayment() {
     queryFn: ({ queryKey: [_, id] }) => fetchUser(id)
   })
 
+  const toggleView = () => {
+    setView(view === "history" ? "payment" : "history")
+  }
+
   return {
     user: data,
     isFetching,
     searchParams,
+    view,
+    toggleView,
   }
 }
