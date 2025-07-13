@@ -12,7 +12,7 @@ const reload = () => location.reload()
 
 function ErrorScreen() {
   return (
-    <main className="flex flex-col justify-center md:items-center gap-y-1 md:gap-y-4 w-screen landscape:w-3xl h-svh landscape:mx-auto p-10">
+    <main className="flex flex-col justify-center md:items-center gap-y-1 md:gap-y-4 w-screen max-screen-view-4xl h-svh p-10">
       <h2 className="w-full text-foreground-faded text-7xl md:text-9xl landscape:text-8xl font-light text-start">
         {title}
       </h2>

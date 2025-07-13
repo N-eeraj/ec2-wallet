@@ -13,7 +13,7 @@ interface SettingsStore {
 
 const settingsStore = create<SettingsStore>()((set) => ({
   theme: (() => {
-    const theme = JSON.parse(localStorage.getItem("theme") ?? "null") as Theme ?? "light"
+    const theme = JSON.parse(localStorage.getItem("theme") || "null") as Theme ?? "light"
     if (theme === "dark") {
       document.documentElement.classList.add("dark")
     }

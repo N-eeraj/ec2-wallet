@@ -59,13 +59,13 @@ function Keypad({ onClick, onDelete, onSubmit }: Props) {
       {keypad.map((key, index) => (
         <li key={index}>
           <button
-            className="size-full h-[min(10vh,80px)] hover:bg-primary-hover/20 text-2xl md:text-4xl landscape:text-2xl font-bold text-center rounded duration-300"
+            className="size-full h-[min(10vh,80px)] hover:bg-primary-hover/20 text-2xl md:portrait:text-4xl font-bold text-center rounded duration-300"
             onClick={() => handleClick(key)}>
             {key === "left-slot" && (
-              <Delete className="mx-auto md:size-12 landscape:size-8" />
+              <Delete className="mx-auto md:portrait:size-10 landscape:size-8" />
             )}
             {key === "right-slot" && (
-              <CheckCircle2 className="mx-auto md:size-12 landscape:size-8" />
+              <CheckCircle2 className="mx-auto md:portrait:size-10 landscape:size-8" />
             )}
             {typeof key === "number" && key}
           </button>

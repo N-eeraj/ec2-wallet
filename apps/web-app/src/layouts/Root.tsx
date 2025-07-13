@@ -8,10 +8,13 @@ import {
   SkeletonTheme,
 } from "react-loading-skeleton"
 import Loader from "@components/Loader"
+import settingsStore from "@stores/settings"
 
 import "react-loading-skeleton/dist/skeleton.css"
 
 function Root() {
+  settingsStore()
+
   return (
     <>
       <SkeletonTheme

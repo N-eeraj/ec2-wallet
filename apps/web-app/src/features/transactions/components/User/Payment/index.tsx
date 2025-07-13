@@ -10,7 +10,6 @@ import clsx from "clsx"
 import {
   ChevronDown,
 } from "lucide-react"
-import Skeleton from "react-loading-skeleton"
 
 function UserPayment() {
   const {
@@ -57,6 +56,10 @@ function UserPayment() {
       </div>
 
       <Input
+        placeholder="Amount"
+        containerProps={{
+          className: "max-w-3xs"
+        }}
         className="text-center" />
     </section>
   )

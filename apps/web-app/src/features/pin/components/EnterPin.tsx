@@ -44,7 +44,7 @@ function EnterPin({
         <h2 className="w-5/6 text-lg md:text-3xl landscape:text-2xl font-bold text-center">
           {title}
         </h2>
-        <p className="w-3/4 text-foreground-faded/75 text-sm md:text-lg landscape:text-sm text-center">
+        <p className="w-3/4 text-foreground-faded/75 text-sm md:portrait:text-lg text-center">
           {description}
         </p>
       </div>

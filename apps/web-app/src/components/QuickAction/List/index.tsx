@@ -8,7 +8,7 @@ function QuickActionList() {
 
   return (
     <section className="landscape:order-1 space-y-2 md:space-y-1.5">
-      <h3 className="text-foreground-secondary text-lg md:text-xl landscape:text-lg font-semibold">
+      <h3 className="text-foreground-secondary text-lg md:portrait:text-xl font-semibold">
         Quick Actions
       </h3>
       <ul className="grid grid-cols-4 gap-3 md:gap-y-2">

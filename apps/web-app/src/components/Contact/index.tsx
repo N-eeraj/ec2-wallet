@@ -6,6 +6,7 @@ import {
 } from "react-router"
 
 import ProfilePicture from "@components/ProfilePicture"
+import SkeletonWrapper from "@components/SkeletonWrapper"
 import type {
   Contact as ContactType,
 } from "@dTypes/user"
@@ -30,20 +31,27 @@ function Contact({ id, name, phone, loading }: Props) {
         phone={phone}
         loading={loading} />
 
-      <span className={clsx(
-          "w-full min-h-6 group-hover:text-primary-hover text-sm md:text-xl landscape:text-base text-center leading-tight overflow-hidden text-ellipsis",
-          "@xs/contact:text-start @xs/contact:font-bold @xs/contact:leading-snug",
-          loading ? "bg-slate-500 rounded animate-pulse" : "duration-300",
-        )}>
-        {name}
-      </span>
-      <span className={clsx(
-          "hidden min-w-28 min-h-4.5 text-foreground-faded landscape:text-sm leading-none",
-          "@xs/contact:block",
-          loading && "bg-slate-500 rounded-sm animate-pulse",
-        )}>
-        {phone}
-      </span>
+      <SkeletonWrapper
+        loading={loading}
+        containerClassName="w-5/6 h-5.5 md:portrait:h-[27.5]">
+        <span className={clsx(
+            "w-full group-hover:text-primary-hover md:portrait:text-xl text-center leading-tight overflow-hidden text-ellipsis duration-300",
+            "@xs/contact:text-start @xs/contact:font-bold @xs/contact:leading-snug",
+          )}>
+          {name}
+        </span>
+      </SkeletonWrapper>
+
+      <SkeletonWrapper
+        loading={loading}
+        containerClassName="w-28 h-3.5 md:portrait:h-4">
+        <span className={clsx(
+            "hidden min-w-28 text-foreground-faded text-sm md:portrait:text-base leading-none",
+            "@xs/contact:block",
+          )}>
+          {phone}
+        </span>
+      </SkeletonWrapper>
     </NavLink>
   )
 }

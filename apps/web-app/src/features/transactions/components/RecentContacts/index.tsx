@@ -17,7 +17,7 @@ function RecentContacts() {
 
   return (
     <section className="landscape:row-span-2 md:col-span-2 landscape:col-span-1 flex flex-col gap-y-1">
-      <h3 className="text-foreground-secondary text-lg md:text-xl landscape:text-lg font-semibold">
+      <h3 className="text-foreground-secondary text-lg md:portrait:text-xl font-semibold">
         Recent Contacts
       </h3>
 
