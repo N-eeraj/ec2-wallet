@@ -1,10 +1,8 @@
 import {
   use,
-  type MouseEventHandler,
 } from "react"
 import {
   useParams,
-  useSearchParams,
 } from "react-router"
 import {
   useQuery,
@@ -26,12 +24,10 @@ async function fetchUser(id: User["id"]): Promise<User> {
   return data.data
 }
 
-export default function useUserPayment() {
+export default function usePaymentView() {
   const params = useParams()
-  const [searchParams] = useSearchParams()
 
   const {
-    view,
     setView,
   } = use(PaymentContext)
 
@@ -48,11 +44,6 @@ export default function useUserPayment() {
     queryFn: ({ queryKey: [_, id] }) => fetchUser(id)
   })
 
-  const toggleView: MouseEventHandler = (event) => {
-    event.stopPropagation()
-    setView(view === PaymentView.HISTORY ? PaymentView.PAYMENT : PaymentView.HISTORY)
-  }
-
   const backToPaymentView = () => {
     setView(PaymentView.PAYMENT)
   }
@@ -60,8 +51,6 @@ export default function useUserPayment() {
   return {
     user: data,
     isFetching,
-    view,
-    toggleView,
     backToPaymentView,
   }
 }

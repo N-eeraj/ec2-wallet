@@ -15,7 +15,7 @@ function AppQueryClient({ children }: PropsWithChildren) {
     <QueryClientProvider client={queryClient}>
       {children}
 
-      <ReactQueryDevtools />
+      <ReactQueryDevtools buttonPosition="bottom-left" />
     </QueryClientProvider>
   )
 }
