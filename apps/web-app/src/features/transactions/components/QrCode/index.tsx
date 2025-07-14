@@ -40,10 +40,8 @@ function QrCode({ id: userId, name }: User) {
         type="number"
         value={amount}
         placeholder="Enter Amount"
-        containerProps={{
-          className: "max-w-72",
-        }}
-        className="background-foreground-faded text-center outline-0"
+        containerClassName="w-40"
+        className="text-center outline-0"
         onChange={({ target }) => setAmount(target.value)}
         onInput={currencyInput} />
     </section>

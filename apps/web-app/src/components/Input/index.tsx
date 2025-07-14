@@ -1,6 +1,5 @@
 import {
   useState,
-  type HTMLAttributes,
   type InputHTMLAttributes,
 } from "react"
 import {
@@ -22,14 +21,14 @@ import {
 } from "@constants/motion"
 
 interface Props extends InputHTMLAttributes<HTMLInputElement> {
-  containerProps?: HTMLAttributes<HTMLDivElement>
   errors?: FieldError
+  containerClassName?: string
 }
 
 const MotionEyeOff = motion(EyeOff)
 const MotionEye = motion(Eye)
 
-function Input({ type, errors, className, containerProps, ...props }: Props) {
+function Input({ type, errors, className, containerClassName, ...props }: Props) {
   const [passwordVisibility, setPasswordVisibility] = useState(false)
   const togglePasswordVisibility = () => {
     setPasswordVisibility(!passwordVisibility)
@@ -37,10 +36,9 @@ function Input({ type, errors, className, containerProps, ...props }: Props) {
 
   return (
     <div
-      {...containerProps}
       className={clsx(
         "relative flex flex-col gap-y-1 w-full",
-        containerProps?.className,
+        containerClassName,
       )}>
 
       <input

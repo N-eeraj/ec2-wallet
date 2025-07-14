@@ -22,7 +22,7 @@ function BackAction() {
   return (
     <NavLink
       to="/users"
-      className="portrait:absolute portrait:top-4 portrait:md:top-6 portrait:left-4 portrait:md:left-6">
+      className="portrait:absolute portrait:top-4 md:portrait:top-6 portrait:left-4 md:portrait:left-6">
       <button>
         <MoveLeft
           className={clsx(
