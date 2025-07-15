@@ -1,4 +1,5 @@
 import {
+  useParams,
   useSearchParams,
 } from "react-router"
 import {
@@ -10,8 +11,19 @@ import {
 import {
   schema,
 } from "@features/transactions/schemas/payment"
+import request from "@lib/axios"
+import {
+  getFormErrors,
+  getErrorMessage,
+} from "@utils/request"
+import type {
+  FormErrorPath,
+} from "@dTypes/form"
 
 export default function usePaymentForm() {
+  const {
+    userId,
+  } = useParams()
   const [searchParams] = useSearchParams()
 
   const {
@@ -34,9 +46,24 @@ export default function usePaymentForm() {
     async (body) => {
       try {
         clearErrors()
-        console.log(body)
+        await request.post("/transactions", {
+          ...body,
+          userId,
+        })
       } catch (error) {
-
+        const formErrors = getFormErrors(error)
+        if (formErrors) {
+          Object.entries(formErrors)
+            .forEach(([field, message]) => {
+              setError(field as FormErrorPath<typeof schema>, { 
+                message,
+              })
+            })
+        } else {
+          setError("root", {
+            message: getErrorMessage(error),
+          })
+        }
       }
     }
   )

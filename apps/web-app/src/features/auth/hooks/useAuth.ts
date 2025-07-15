@@ -54,7 +54,7 @@ export default function useAuth<FormShape extends ZodRawShape>({ schema, endpoin
         if (formErrors) {
           Object.entries(formErrors)
             .forEach(([field, message]) => {
-              setError(field as FormErrorPath<FormShape>, { 
+              setError(field as FormErrorPath<typeof schema>, { 
                 message,
               })
             })

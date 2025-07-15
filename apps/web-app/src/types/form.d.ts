@@ -4,6 +4,7 @@ import {
 import {
   type z,
   type ZodObject,
+  type ZodRawShape,
 } from "zod/v4"
 
-export type FormErrorPath<SchemaShape> = Path<z.input<ZodObject<SchemaShape>>>
+export type FormErrorPath<Schema> = Path<z.input<ZodObject<Schema["shape"]>>>
