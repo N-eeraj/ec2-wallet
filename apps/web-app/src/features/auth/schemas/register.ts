@@ -1,4 +1,6 @@
-import { z } from "zod/v4"
+import {
+  z,
+} from "zod/v4"
 
 import {
   MIN_NAME_LENGTH,

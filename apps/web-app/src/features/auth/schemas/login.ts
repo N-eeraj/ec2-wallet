@@ -1,4 +1,6 @@
-import { z } from "zod/v4"
+import {
+  z,
+} from "zod/v4"
 import {
   formSchema as registerFormSchema,
 } from "@features/auth/schemas/register"

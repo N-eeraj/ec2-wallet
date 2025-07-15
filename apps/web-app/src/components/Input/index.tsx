@@ -23,12 +23,13 @@ import {
 interface Props extends InputHTMLAttributes<HTMLInputElement> {
   errors?: FieldError
   containerClassName?: string
+  errorClassName?: string
 }
 
 const MotionEyeOff = motion(EyeOff)
 const MotionEye = motion(Eye)
 
-function Input({ type, errors, className, containerClassName, ...props }: Props) {
+function Input({ type, errors, className, containerClassName, errorClassName, ...props }: Props) {
   const [passwordVisibility, setPasswordVisibility] = useState(false)
   const togglePasswordVisibility = () => {
     setPasswordVisibility(!passwordVisibility)
@@ -68,7 +69,9 @@ function Input({ type, errors, className, containerClassName, ...props }: Props)
           </button>
         )}
 
-        <ErrorMessage errors={errors} />
+        <ErrorMessage
+          errors={errors}
+          className={errorClassName} />
     </div>
   )
 }

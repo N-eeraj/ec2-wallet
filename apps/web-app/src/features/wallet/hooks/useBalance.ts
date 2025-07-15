@@ -69,7 +69,9 @@ export default function useBalance() {
 
   useEffect(() => {
     if (data) {
-      animate(balance, data, { duration: 0.4 })
+      animate(balance, data, {
+        duration: 0.4,
+      })
     }
   }, [
     data,

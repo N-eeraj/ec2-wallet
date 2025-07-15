@@ -8,3 +8,5 @@ export const SCANNER_DECORATION_BORDER_CLASSES = [
   "-bottom-4 -right-4 border-b-6 border-r-6 border-b-primary-default border-r-primary-default rounded-br-md",
   "-bottom-4 -left-4 border-b-6 border-l-6 border-b-primary-default border-l-primary-default rounded-bl-md",
 ] as const
+
+export const MAX_AMOUNT = 50_000

@@ -17,7 +17,9 @@ request.interceptors.request.use((config) => {
 
   // change payload to snake case based on env
   if (import.meta.env.VITE_API_USES_SNAKE_CASE === "true" && config.data && typeof config.data === "object") {
-    config.data = snakecaseKeys(config.data, { deep: true })
+    config.data = snakecaseKeys(config.data, {
+      deep: true,
+    })
   }
 
   return config
@@ -27,7 +29,9 @@ request.interceptors.response.use(
   (response) => {
     // change response data to camelcase
     if (response.data && typeof response.data === "object") {
-      response.data = camelcaseKeys(response.data, { deep: true })
+      response.data = camelcaseKeys(response.data, {
+        deep: true,
+      })
     }
     return response
   }, (error) => {
