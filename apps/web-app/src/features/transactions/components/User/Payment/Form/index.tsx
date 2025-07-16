@@ -42,7 +42,8 @@ function Form() {
 
       <Button
         loading={isSubmitting}
-        className="max-md:fixed max-md:bottom-4 max-md:right-4 flex justify-center items-center gap-x-2 md:w-full max-w-40 max-md:aspect-square mt-3 !rounded-md">
+        className="max-md:fixed max-md:bottom-4 max-md:right-4 flex justify-center items-center gap-x-2 md:w-full max-w-40 max-md:aspect-square mt-3 !rounded-md"
+        loaderClassName="size-5">
         <span className="max-md:hidden">
           Pay
         </span>

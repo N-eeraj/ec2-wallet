@@ -12,9 +12,10 @@ import {
 
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   loading?: boolean
+  loaderClassName?: string
 }
 
-function Button({ loading, disabled, children, className, ...props }: Props & HTMLMotionProps<"button">) {
+function Button({ loading, disabled, children, className, loaderClassName, ...props }: Props & HTMLMotionProps<"button">) {
   return (
     <motion.button
       {...props}
@@ -25,7 +26,11 @@ function Button({ loading, disabled, children, className, ...props }: Props & HT
         loading && "opacity-50 !cursor-wait",
       )}>
       {loading ?
-        <Loader2 className="mx-auto animate-spin" /> :
+        <Loader2
+          className={clsx(
+            "mx-auto animate-spin",
+            loaderClassName,
+          )} /> :
         children
       }
     </motion.button>

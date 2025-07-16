@@ -9,6 +9,10 @@ import {
   zodResolver,
 } from "@hookform/resolvers/zod"
 import {
+  toast,
+} from "sonner"
+
+import {
   schema,
 } from "@features/transactions/schemas/payment"
 import request from "@lib/axios"
@@ -46,10 +50,14 @@ export default function usePaymentForm() {
     async (body) => {
       try {
         clearErrors()
-        await request.post("/transactions", {
+        const payload = {
           ...body,
           userId,
-        })
+        }
+        if (!payload.notes) {
+          delete payload.notes
+        }
+        await request.post("/transactions", payload)
       } catch (error) {
         const formErrors = getFormErrors(error)
         if (formErrors) {
@@ -60,9 +68,12 @@ export default function usePaymentForm() {
               })
             })
         } else {
-          setError("root", {
-            message: getErrorMessage(error),
-          })
+          toast.error(
+            getErrorMessage(error),
+            {
+              position: "bottom-center",
+            }
+          )
         }
       }
     }
