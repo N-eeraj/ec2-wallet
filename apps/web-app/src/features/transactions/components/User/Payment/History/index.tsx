@@ -16,7 +16,7 @@ function History() {
     <div
       className={clsx(
         "w-full landscape:w-3xs portrait:bg-foreground-primary portrait:text-foreground-primary-inverted portrait:duration-400 origin-top portrait:-z-1",
-        view === PaymentView.PAYMENT ? "portrait:-translate-y-full portrait:h-0 portrait:opacity-0" : "portrait:h-3/5",
+        view === PaymentView.HISTORY ? "portrait:h-3/5" : "portrait:-translate-y-full portrait:h-0 portrait:opacity-0",
       )}>
       History
     </div>

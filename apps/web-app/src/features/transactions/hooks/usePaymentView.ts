@@ -28,6 +28,7 @@ export default function usePaymentView() {
   const params = useParams()
 
   const {
+    view,
     setView,
   } = use(PaymentContext)
 
@@ -51,6 +52,7 @@ export default function usePaymentView() {
   return {
     user: data,
     isFetching,
+    isSuccess: view === PaymentView.SUCCESS,
     backToPaymentView,
   }
 }

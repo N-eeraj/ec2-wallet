@@ -5,8 +5,9 @@ import {
 } from "react"
 
 export enum PaymentView {
-  PAYMENT = "payment",
-  HISTORY = "history",
+  PAYMENT,
+  HISTORY,
+  SUCCESS,
 }
 
 interface ContextValues {

@@ -1,4 +1,7 @@
 import {
+  use,
+} from "react"
+import {
   useParams,
   useSearchParams,
 } from "react-router"
@@ -15,6 +18,10 @@ import {
 import {
   schema,
 } from "@features/transactions/schemas/payment"
+import {
+  PaymentView,
+  PaymentContext,
+} from "@features/transactions/contexts/Payment"
 import request from "@lib/axios"
 import {
   getFormErrors,
@@ -29,6 +36,9 @@ export default function usePaymentForm() {
     userId,
   } = useParams()
   const [searchParams] = useSearchParams()
+  const {
+    setView,
+  } = use(PaymentContext)
 
   const {
     register,
@@ -58,6 +68,7 @@ export default function usePaymentForm() {
           delete payload.notes
         }
         await request.post("/transactions", payload)
+        setView(PaymentView.SUCCESS)
       } catch (error) {
         const formErrors = getFormErrors(error)
         if (formErrors) {

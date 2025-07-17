@@ -1,5 +1,6 @@
 import ViewToggle from "@features/transactions/components/User/Payment/ViewToggle"
 import Form from "@features/transactions/components/User/Payment/Form"
+import Success from "@features/transactions/components/User/Payment/Success"
 import usePaymentView from "@features/transactions/hooks/usePaymentView"
 
 import ProfilePicture from "@components/ProfilePicture"
@@ -10,8 +11,15 @@ function UserPayment() {
   const {
     user,
     isFetching,
+    isSuccess,
     backToPaymentView,
   } = usePaymentView()
+
+  if (isSuccess) {
+    return (
+      <Success />
+    )
+  }
 
   return (
     <section
